@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cyptocurrency Info</title>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" type="text/css" href="style.css"/>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <script src="src/stats.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="title">
+                <h1 class="title-header">Cryptocurrency info</h1>
+                <p class="title-info">Everything you need to know about every cryptocurrency in the market right now.</p>
+            </div>
+            <div class="data">
+                <div class="sections">
+                    <ul>
+                        <li class="stats-item">Stats</li>
+                        <li class="coins-item">Coins</li>
+                        <li class="markets-item">Markets</li>
+                        <li class="exchanges-item">Exchanges</li>
+                        <li class="get-coin-item">Get coin</li>
+                        <li class="get-coin-history-item">Get coin history</li>
+                    </ul>
+                </div>
+                <div class="content-area">
+                    <!-- Stats area -->
+                    <div class="stats-area">
+                        <div>
+                            <p class="general-info">General cryptocurrency stats</p>
+                            <div class="currency-selector">
+                                <span>Choose currency:</span>
+                                <select class="currency-dropdown">
+                                    <option value="EUR">EUR</option>
+                                    <option value="USD" selected>USD</option>
+                                </select>
+                                <button class="refresh">Refresh</button>
+                            </div>
+                        </div>
+                        <div class="stats-area-inner"><p class="total-coins">Total coins:</p><p class="info"></p></div>
+                        <div class="stats-area-inner"><p class="total-markets">Total markets:</p><p class="info"></p></div>
+                        <div class="stats-area-inner"><p class="total-exchanges">Total Exhanges:</p><p class="info"></p></div>
+                        <div class="stats-area-inner"><p class="total-trading-volume">Total 24 hour trading volume:</p><p class="info"></p></div>
+                        <div class="stats-area-inner"><p class="total-market-cap">Total Market Cap:</p><p class="info"></p></div>
+                    </div>
+                    <div class="stats-area-error">
+                        <p class="error-title">Error fetching data</p>
+                        <p class="code"></p>
+                        <p class="message"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
