@@ -6,9 +6,9 @@ $.fn.fetchStats = function(){
     var $totalExchanges = $statsArea.find(".total-exchanges");
     var $totalMarketCap = $statsArea.find(".total-market-cap");
 
-    var $statsAreaError = $(".stats-area-error");
-    var $errorCode = $statsAreaError.children('.code');
-    var $messageCode = $statsAreaError.children('.message');
+    var $errorArea = $(".error-area");
+    var $errorCode = $errorArea.children('.code');
+    var $messageCode = $errorArea.children('.message');
 
     var currency = $(".currency-dropdown option:selected").text();
     var symbol = currency == 'EUR' ? '€' : '$';
@@ -27,11 +27,11 @@ $.fn.fetchStats = function(){
             else {
                 $errorCode.text(result.code);
                 $messageCode.text(result.message);
-                $statsAreaError.addClass("active");
+                $errorArea.addClass("active");
             }
         },
         error: function(xhr, status, error){
-            $statsAreaError.html(status + " " + error);
+            $errorArea.html(status + " " + error);
         }
     });
 }

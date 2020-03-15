@@ -6,6 +6,7 @@
         <link rel="stylesheet" type="text/css" href="style.css"/>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
         <script src="src/stats.js"></script>
+        <script src="src/tabs.js"></script>
     </head>
     <body>
         <div class="container">
@@ -44,11 +45,27 @@
                         <div class="stats-area-inner"><p class="total-trading-volume">Total 24 hour trading volume:</p><p class="info"></p></div>
                         <div class="stats-area-inner"><p class="total-market-cap">Total Market Cap:</p><p class="info"></p></div>
                     </div>
-                    <div class="stats-area-error">
+                    <div class="error-area">
                         <p class="error-title">Error fetching data</p>
                         <p class="code"></p>
                         <p class="message"></p>
                     </div>
+
+                    <!-- Coins area -->
+                    <div class="coins-area">
+                        <ul class="coins-list">
+                            <li class="headers">
+                                <div class="header-container">
+                                    <div class="name-header">Name</div>
+                                    <div class="symbol-header">Symbol</div>
+                                    <div class="icon-header">Icon</div>
+                                    <div class="price-header">Price</div>
+                                    <div class="change-header">Change</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
                 </div>
             </div>
         </div>
