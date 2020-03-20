@@ -31,7 +31,7 @@
                         <div>
                             <p class="general-info">General cryptocurrency stats</p>
                             <div class="currency-selector">
-                                <span>Choose currency:</span>
+                                <span>Currency:</span>
                                 <select class="currency-dropdown">
                                     <option value="EUR">EUR</option>
                                     <option value="USD" selected>USD</option>
@@ -53,6 +53,48 @@
 
                     <!-- Coins area -->
                     <div class="coins-area">
+                        <div class="coin-options-area">
+
+                            <div class="coin-currency-selector">
+                                <span>Currency:</span>
+                                <select class="currency-dropdown">
+                                    <option value="EUR">EUR</option>
+                                    <option value="USD" selected>USD</option>
+                                </select>
+                            </div>
+
+                            <div class="coin-period-selector">
+                                <span>Time period:</span>
+                                <select class="period-dropdown">
+                                    <option value="24h" selected>1 day</option>
+                                    <option value="7d">1 week</option>
+                                    <option value="30d">1 month</option>
+                                </select>
+                            </div>
+
+                            <div class="coin-sort-selector">
+                                <span>Sorting:</span>
+                                <select class="sort-dropdown">
+                                    <option value="coinranking" selected>Rank</option>
+                                    <option value="price">Price</option>
+                                    <option value="marketCap">Market Cap</option>
+                                    <option value="change">Change</option>
+                                </select>
+                            </div>
+
+                            <div class="coin-order-selector">
+                                <span>Order:</span>
+                                <select class="order-dropdown">
+                                    <option value="desc" selected>Descending</option>
+                                    <option value="asc">Ascending</option>
+                                </select>
+                            </div>
+
+                            <div class="coin-refresh-container">
+                                <button class="coin-refresh">Refresh</button>
+                            </div>
+
+                        </div>
                         <div class="header-container">
                             <div class="name-header">NAME</div>
                             <div class="symbol-header">SYMBOL</div>

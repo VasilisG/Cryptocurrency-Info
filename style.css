@@ -175,6 +175,24 @@ select {
     padding: 20px 0px;
     background: #0a0c11;
 }
+
+.coin-area .currency-selector {
+    text-align: left;
+    margin: 0;
+    padding: 0;
+}
+
+.coin-currency-selector span, .coin-period-selector span, .coin-sort-selector span, .coin-order-selector span {
+    font-size: 18px;
+    text-align: left;
+}
+
+.coin-options-area {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 20px;
+    margin-bottom: 50px;
+}
 /* Coins area CSS end. */
 
 /*
