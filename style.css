@@ -19,6 +19,12 @@ button:hover {
     cursor: pointer;
 }
 
+button:hover:active {
+    padding: 0px 8px;
+    background: #0c3817;
+    border: 2px solid #27af49;
+}
+
 .active {
     display: block !important;
 }
@@ -176,7 +182,11 @@ select {
     background: #0a0c11;
 }
 
-.coin-area .currency-selector {
+.coins-area {
+    display: none;
+}
+
+.coins-area .currency-selector {
     text-align: left;
     margin: 0;
     padding: 0;
@@ -190,10 +200,33 @@ select {
 .coin-options-area {
     display: flex;
     justify-content: space-between;
-    padding: 0px 20px;
-    margin-bottom: 50px;
+    padding: 30px 20px;
 }
 /* Coins area CSS end. */
+
+/* Markets area CSS start. */
+.markets-area {
+    display: none;
+}
+/* Markets area CSS end. */
+
+/* Exchanges area CSS start. */
+.exchanges-area {
+    display: none;
+}
+/* Exchanges area CSS end. */
+
+/* Get coin area CSS start. */
+.get-coin-area {
+    display: none;
+}
+/* Get coin area CSS end. */
+
+/* Get coin history area CSS start. */
+.get-coin-history-area {
+    display: none;
+}
+/* Get coin history area CSS end. */
 
 /*
 https://docs.coinranking.com/
