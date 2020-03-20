@@ -30,7 +30,7 @@ button:hover:active {
 }
 
 .container {
-    width: 65%;
+    width: 80%;
     margin: auto;
 }
 
@@ -144,7 +144,7 @@ sup {
 
 .currency-selector {
     padding: 40px 0px;
-    text-align: right;
+    text-align: left;
 }
 
 .currency-selector span {
@@ -195,6 +195,7 @@ select {
 .coin-currency-selector span, .coin-period-selector span, .coin-sort-selector span, .coin-order-selector span {
     font-size: 18px;
     text-align: left;
+    margin-right: 10px;
 }
 
 .coin-options-area {
