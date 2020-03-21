@@ -174,9 +174,13 @@ select {
 /* Stats area CSS end. */
 
 /* Coins area CSS start. */
+.header-container {
+    height: 60px;
+    display: flex;
+}
+
 .header-container div {
-    width: 20%;
-    float: left;
+    width: 16.67%;
     text-align: center;
     padding: 20px 0px;
     background: #0a0c11;
@@ -202,6 +206,21 @@ select {
     display: flex;
     justify-content: space-between;
     padding: 30px 20px;
+}
+
+.coin-list {
+    height: 400px;
+}
+
+.basic-info {
+    display: flex;
+    background: #2e3951;
+}
+
+.basic-info div {
+    width: 16.67%;
+    text-align: center;
+    padding: 20px 0px;
 }
 /* Coins area CSS end. */
 
