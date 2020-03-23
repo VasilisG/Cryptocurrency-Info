@@ -230,6 +230,14 @@ select {
 .more-info {
     background: #1e4446;
 }
+
+.more-info div {
+    display: flex;
+}
+
+.more-info div p {
+    width: 50%;
+}
 /* Coins area CSS end. */
 
 /* Markets area CSS start. */
