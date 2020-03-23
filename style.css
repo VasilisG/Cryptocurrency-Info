@@ -222,6 +222,14 @@ select {
     text-align: center;
     padding: 20px 0px;
 }
+
+.more-info p {
+    margin: 0;
+}
+
+.more-info {
+    background: #364748;
+}
 /* Coins area CSS end. */
 
 /* Markets area CSS start. */
