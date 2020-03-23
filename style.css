@@ -223,12 +223,9 @@ select {
     padding: 20px 0px;
 }
 
-.more-info p {
-    margin: 0;
-}
-
 .more-info {
     background: #1e4446;
+    display: none;
 }
 
 .more-info div {
@@ -237,6 +234,7 @@ select {
 
 .more-info div p {
     width: 50%;
+    margin: 0;
 }
 /* Coins area CSS end. */
 

@@ -17,4 +17,8 @@ $.fn.fetchCoins = function(){
 
 $(document).ready(function(){
     $.fn.fetchCoins();
+
+    $('.more').on('click', function(){
+        $(this).parent().siblings('.more-info').slideToggle();
+    });
 });
