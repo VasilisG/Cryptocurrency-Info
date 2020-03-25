@@ -10,7 +10,8 @@ $.fn.fetchStats = function(){
     var $errorCode = $errorArea.children('.code');
     var $messageCode = $errorArea.children('.message');
 
-    var currency = $(".currency-dropdown option:selected").text();
+    var currency = $(".currency-dropdown option:selected").val();
+    console.log(currency);
     var symbol = currency == 'EUR' ? '€' : '$';
 
     $.ajax({
@@ -44,7 +45,6 @@ $.fn.getStats = function(interval){
 }
 
 $(document).ready(function(){
-    $(".currency-dropdown option").val('EUR');
     $.fn.fetchStats();
 
     $(".refresh").on("click", function(){

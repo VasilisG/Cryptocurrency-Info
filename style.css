@@ -215,6 +215,7 @@ select {
 .basic-info {
     display: flex;
     background: #2e3951;
+    border-bottom: 1px solid #171d2b;
 }
 
 .basic-info div {
@@ -226,10 +227,15 @@ select {
 .more-info {
     background: #1e4446;
     display: none;
+    padding: 20px;
+    overflow-y: scroll;
+    height: 300px;
+    box-sizing: border-box;
 }
 
 .more-info div {
     display: flex;
+    margin-bottom: 20px;
 }
 
 .more-info div p {
