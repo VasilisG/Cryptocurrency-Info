@@ -19,6 +19,11 @@ $(document).ready(function(){
     $.fn.fetchCoins();
 
     $('.more').on('click', function(){
-        $(this).parent().siblings('.more-info').slideToggle();
+        $moreInfo = $(this).parent().siblings('.more-info');
+        if($moreInfo.hasClass('more-info-active')){
+            $moreInfo.removeClass('more-info-active');
+        }
+        else $moreInfo.addClass('more-info-active');
+        // $(this).parent().siblings('.more-info').slideToggle();
     });
 });

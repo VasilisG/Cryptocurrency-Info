@@ -226,16 +226,22 @@ select {
 
 .more-info {
     background: #1e4446;
-    display: none;
-    padding: 20px;
+    height: 0px;
+    opacity: 0;
     overflow-y: scroll;
-    height: 300px;
     box-sizing: border-box;
+    transition: 0.4s;
+}
+
+.more-info-active {
+    height: 300px;
+    opacity: 1;
 }
 
 .more-info div {
     display: flex;
-    margin-bottom: 20px;
+    margin: 20px 0px;
+    padding-left: 20px;
 }
 
 .more-info div p {
