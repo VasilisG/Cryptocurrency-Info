@@ -30,15 +30,15 @@ $.fn.fetchCoins = function(){
                     $coinBasicInfo = $('<div class="basic-info"></div>');
                     $coinMoreInfo = $('<div class="more-info"></div>');
 
-                    $coinName = $('<div class="name">' + coinData['name'] + '</div>');
-                    $coinSymbol = $('<div class="symbol">' + coinData['symbol'] + '</div>');
+                    $coinName = $('<div class="name"><span>' + coinData['name'] + '</span></div>');
+                    $coinSymbol = $('<div class="symbol"><span>' + coinData['symbol'] + '</span></div>');
                     $coinIcon = $('<div class="icon">' + '<img src="' + coinData['iconUrl'] + '"/></div>');
-                    $coinPrice = $('<div class="price">' + coinData['price'] + '</div>');
-                    $coinChange = $('<div class="change">' + coinData['change'] + '</div>');
-                    $coinAction = $('<div class="more">More</div>');
+                    $coinPrice = $('<div class="price"><span>' + coinData['price'] + '</span></div>');
+                    $coinChange = $('<div class="change"><span>' + coinData['change'] + '</span></div>');
+                    $coinAction = $('<div class="more"><span>More</span></div>');
 
                     $coinDescription = $('<div class="description"><p class="more-info-title">Description:</p><p class="more-info-data">' + coinData['description'] +'</p></div>');
-                    $coinVolume = $('<div class="volume"><p class="more-info-title">Volume:</p><p class="more-info-data"' + coinData['volume'] + '</p></div>');
+                    $coinVolume = $('<div class="volume"><p class="more-info-title">Volume:</p><p class="more-info-data">' + coinData['volume'] + '</p></div>');
                     $coinMarketGap = $('<div class="marketCap"><p class="more-info-title">Market Cap:</p><p class="more-info-data">' + coinData['marketCap'] + '</p></div>');
                     $coinCirculatingSupply = $('<div class="circulating-supply"><p class="more-info-title">Circulating supply:</p><p class="more-info-data">' + coinData['circulatingSupply'] + '</p></div>');
                     $coinTotalSupply = $('<div class="total-supply"><p class="more-info-title">Total supply:</p><p class="more-info-data">' + coinData['totalSupply'] + '</p></div>');
@@ -83,14 +83,17 @@ $.fn.fetchCoins = function(){
     });
 }
 
-$(document).ready(function(){
-    $.fn.fetchCoins();
-
-    $('.more').on('click', function(){
+$.fn.attachMoreListener = function() {
+    $('body').on('click', '.more', function(){
         $moreInfo = $(this).parent().siblings('.more-info');
         if($moreInfo.hasClass('more-info-active')){
             $moreInfo.removeClass('more-info-active');
         }
         else $moreInfo.addClass('more-info-active');;
     });
+}
+
+$(document).ready(function(){
+    $.fn.fetchCoins();
+    $.fn.attachMoreListener();    
 });
