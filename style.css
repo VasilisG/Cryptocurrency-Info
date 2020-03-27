@@ -224,6 +224,11 @@ select {
     padding: 20px 0px;
 }
 
+.basic-info .icon img {
+    width: 30px;
+    height: 30px;
+}
+
 .more-info {
     background: #1e4446;
     height: 0px;
