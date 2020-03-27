@@ -227,6 +227,11 @@ select {
     padding: 15px 0px;
 }
 
+.basic-info div span {
+    position: relative;
+    top: 25%;
+}
+
 .basic-info .icon img {
     width: 30px;
     height: 30px;
@@ -255,6 +260,8 @@ select {
 .more-info div p {
     width: 50%;
     margin: 0;
+    text-align: justify;
+    padding: 0px 20px;
 }
 /* Coins area CSS end. */
 
