@@ -236,6 +236,7 @@ select {
     font-size: 18px;
     font-weight: bold;
     letter-spacing: 1px;
+    text-shadow: 0px 2px #000;
 }
 
 .basic-info .icon img {
@@ -272,6 +273,9 @@ select {
     margin: 0;
     text-align: justify;
     padding: 0px 20px;
+    font-weight: bold;
+    text-shadow: 0px 2px #000;
+    font-size: 18px;
 }
 
 .more-info-title {
@@ -288,7 +292,6 @@ select {
 }
 
 .positive-change, .negative-change, .no-change {
-    text-shadow: 0px 2px #000;
     font-weight: bold; 
 }
 
@@ -306,7 +309,6 @@ select {
 
 .price span {
     color: #f0f095;
-    text-shadow: 0px 2px #000;
 }
 /* Coins area CSS end. */
 
