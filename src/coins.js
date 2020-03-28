@@ -1,3 +1,17 @@
+function getPriceElement(price){
+    return parseFloat(price).toFixed(4);
+}
+
+function getChangeElement(change){
+    if(change > 0){
+        return '<span class="positive-change">' + '+' + change.toFixed(2) + '</span>';
+    }
+    else if(change < 0) {
+        return  '<span class="negative-change">' + change.toFixed(2) + '</span>';
+    }
+    else return '<span class="no-change">' + change.toFixed(2) + '</span>'
+}
+
 $.fn.fetchCoins = function(){
 
     var $coinList = $('.coin-list');
@@ -22,7 +36,7 @@ $.fn.fetchCoins = function(){
                 var $coinDescription, $coinVolume, $coinMarketGap, $coinCirculatingSupply, $coinTotalSupply,
                     $coinFirstSeen, $coinNumberOfMarkets, $coinNumberOfExchanges, $coinHighestPrice, $coinHighestPriceDate;
 
-                $coinList.empty();
+                $('.coin-list-item').remove();
 
                 $.each(coins, function(index, coinData){
 
@@ -33,8 +47,8 @@ $.fn.fetchCoins = function(){
                     $coinName = $('<div class="name"><span>' + coinData['name'] + '</span></div>');
                     $coinSymbol = $('<div class="symbol"><span>' + coinData['symbol'] + '</span></div>');
                     $coinIcon = $('<div class="icon">' + '<img src="' + coinData['iconUrl'] + '"/></div>');
-                    $coinPrice = $('<div class="price"><span>' + coinData['price'] + '</span></div>');
-                    $coinChange = $('<div class="change"><span>' + coinData['change'] + '</span></div>');
+                    $coinPrice = $('<div class="price"><span>' + getPriceElement(coinData['price']) + '</span></div>');
+                    $coinChange = $('<div class="change">' + getChangeElement(coinData['change']) + '</div>');
                     $coinAction = $('<div class="more"><span>More</span></div>');
 
                     $coinDescription = $('<div class="description"><p class="more-info-title">Description:</p><p class="more-info-data">' + coinData['description'] +'</p></div>');
