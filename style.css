@@ -303,6 +303,11 @@ select {
 .no-change {
     color: #cec369;
 }
+
+.price span {
+    color: #f0f095;
+    text-shadow: 0px 2px #000;
+}
 /* Coins area CSS end. */
 
 /* Markets area CSS start. */
