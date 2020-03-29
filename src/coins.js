@@ -109,14 +109,23 @@ $.fn.fetchCoins = function(){
     });
 }
 
+$.fn.getCoins = function(interval){
+    $.fn.fetchCoins();
+    setInterval(function(){
+        $.fn.fetchStats();  
+    },interval);
+}
+
 $.fn.attachMoreListener = function() {
     $('body').on('click', '.more', function(){
         $moreInfo = $(this).parent().siblings('.more-info');
         if($moreInfo.hasClass('more-info-active')){
             $moreInfo.removeClass('more-info-active');
+            $(this).html('<span>More<i class="fa fas fa-chevron-down"></i></span>');
         }
         else {
             $moreInfo.addClass('more-info-active');
+            $(this).html('<span>Less<i class="fa fas fa-chevron-up"></i></span>');
         } 
     });
 }
