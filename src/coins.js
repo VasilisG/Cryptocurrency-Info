@@ -1,5 +1,5 @@
 function getPriceElement(price){
-    return parseFloat(price).toFixed(4);
+    return parseFloat(price).toLocaleString();
 }
 
 function getDateElement(timestamp){
