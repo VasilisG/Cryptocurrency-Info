@@ -2,6 +2,14 @@ function getPriceElement(price){
     return parseFloat(price).toFixed(4);
 }
 
+function getDateElement(timestamp){
+    var date = new Date(timestamp);
+    var year = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(date);
+    var month = new Intl.DateTimeFormat('en', { month: '2-digit' }).format(date);
+    var day = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(date);
+    return [day, month, year].join(' / ');
+}
+
 function getChangeElement(change){
     if(change > 0){
         return '<span class="positive-change">' + '+' + change.toFixed(2) + '</span>';
@@ -10,6 +18,10 @@ function getChangeElement(change){
         return  '<span class="negative-change">' + change.toFixed(2) + '</span>';
     }
     else return '<span class="no-change">' + change.toFixed(2) + '</span>'
+}
+
+function getDescriptionElement(description){
+    return description === null ? '-' : description;
 }
 
 $.fn.fetchCoins = function(){
@@ -49,18 +61,18 @@ $.fn.fetchCoins = function(){
                     $coinIcon = $('<div class="icon">' + '<img src="' + coinData['iconUrl'] + '"/></div>');
                     $coinPrice = $('<div class="price"><span>' + getPriceElement(coinData['price']) + '</span></div>');
                     $coinChange = $('<div class="change">' + getChangeElement(coinData['change']) + '</div>');
-                    $coinAction = $('<div class="more"><span>More</span></div>');
+                    $coinAction = $('<div class="more"><span>More<i class="fa fas fa-chevron-down"></i></span></div>');
 
-                    $coinDescription = $('<div class="description"><p class="more-info-title">Description:</p><p class="more-info-data">' + coinData['description'] +'</p></div>');
-                    $coinVolume = $('<div class="volume"><p class="more-info-title">Volume:</p><p class="more-info-data">' + coinData['volume'] + '</p></div>');
-                    $coinMarketGap = $('<div class="marketCap"><p class="more-info-title">Market Cap:</p><p class="more-info-data">' + coinData['marketCap'] + '</p></div>');
-                    $coinCirculatingSupply = $('<div class="circulating-supply"><p class="more-info-title">Circulating supply:</p><p class="more-info-data">' + coinData['circulatingSupply'] + '</p></div>');
-                    $coinTotalSupply = $('<div class="total-supply"><p class="more-info-title">Total supply:</p><p class="more-info-data">' + coinData['totalSupply'] + '</p></div>');
-                    $coinFirstSeen = $('<div class="first-seen"><p class="more-info-title">First seen:</p><p class="more-info-data">' + coinData['firstSeen'] + '</p></div>');
+                    $coinDescription = $('<div class="description"><p class="more-info-title">Description:</p><p class="more-info-data">' + getDescriptionElement(coinData['description']) +'</p></div>');
+                    $coinVolume = $('<div class="volume"><p class="more-info-title">Volume:</p><p class="more-info-data">' + coinData['volume'].toLocaleString() + '</p></div>');
+                    $coinMarketGap = $('<div class="marketCap"><p class="more-info-title">Market Cap:</p><p class="more-info-data">' + coinData['marketCap'].toLocaleString() + '</p></div>');
+                    $coinCirculatingSupply = $('<div class="circulating-supply"><p class="more-info-title">Circulating supply:</p><p class="more-info-data">' + coinData['circulatingSupply'].toLocaleString() + '</p></div>');
+                    $coinTotalSupply = $('<div class="total-supply"><p class="more-info-title">Total supply:</p><p class="more-info-data">' + coinData['totalSupply'].toLocaleString() + '</p></div>');
+                    $coinFirstSeen = $('<div class="first-seen"><p class="more-info-title">First seen:</p><p class="more-info-data">' + getDateElement(coinData['firstSeen']) + '</p></div>');
                     $coinNumberOfMarkets = $('<div class="number-of-markets"><p class="more-info-title">Number of markets:</p><p class="more-info-data">' + coinData['numberOfMarkets'] + '</p></div>');
                     $coinNumberOfExchanges = $('<div class="number-of-exchanges"><p class="more-info-title">Number of exchanges:</p><p class="more-info-data">' + coinData['numberOfExchanges'] + '</p></div>');
-                    $coinHighestPrice = $('<div class="highest-price"><p class="more-info-title">Highest price:</p><p class="more-info-data">' + coinData['allTimeHigh']['price'] + '</p></div>');
-                    $coinHighestPriceDate = $('<div class="highest-price-date"><p class="more-info-title">Highest price data:</p><p class="more-info-data">' + coinData['allTimeHigh']['timestamp'] + '</p></div>');
+                    $coinHighestPrice = $('<div class="highest-price"><p class="more-info-title">Highest price:</p><p class="more-info-data">' + getPriceElement(coinData['allTimeHigh']['price']) + '</p></div>');
+                    $coinHighestPriceDate = $('<div class="highest-price-date"><p class="more-info-title">Highest price data:</p><p class="more-info-data">' + getDateElement(coinData['allTimeHigh']['timestamp']) + '</p></div>');
 
                     
                     $coinBasicInfo.append($coinName);
@@ -103,7 +115,9 @@ $.fn.attachMoreListener = function() {
         if($moreInfo.hasClass('more-info-active')){
             $moreInfo.removeClass('more-info-active');
         }
-        else $moreInfo.addClass('more-info-active');;
+        else {
+            $moreInfo.addClass('more-info-active');
+        } 
     });
 }
 
