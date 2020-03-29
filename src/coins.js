@@ -24,6 +24,10 @@ function getDescriptionElement(description){
     return description === null ? '-' : description;
 }
 
+function getQuantityElement(elem){
+    return elem === null ? '-' : elem.toLocaleString();
+}
+
 $.fn.fetchCoins = function(){
 
     var $coinList = $('.coin-list');
@@ -36,11 +40,10 @@ $.fn.fetchCoins = function(){
     var timePeriod = '&timePeriod?=' + $(".period-dropdown option:selected").val();
     var sorting = '&sort=' + $(".sort-dropdown option:selected").val();
     var order = '&order=' + $(".order-dropdown option:selected").val();
-
-    console.log('https://api.coinranking.com/v1/public/coins' + baseCurrency + timePeriod + sorting + order);
+    var limit = '&limit=100';
 
     $.ajax({
-        url : 'https://api.coinranking.com/v1/public/coins' + baseCurrency + timePeriod + sorting + order,
+        url : 'https://api.coinranking.com/v1/public/coins' + baseCurrency + timePeriod + sorting + order + limit,
         success: function(data, status, jqXHR){
 
             console.log(data);
@@ -71,10 +74,10 @@ $.fn.fetchCoins = function(){
                     $coinAction = $('<div class="more"><span>More<i class="fa fas fa-chevron-down"></i></span></div>');
 
                     $coinDescription = $('<div class="description"><p class="more-info-title">Description:</p><p class="more-info-data">' + getDescriptionElement(coinData['description']) +'</p></div>');
-                    $coinVolume = $('<div class="volume"><p class="more-info-title">Volume:</p><p class="more-info-data">' + coinData['volume'].toLocaleString() + '</p></div>');
-                    $coinMarketGap = $('<div class="marketCap"><p class="more-info-title">Market Cap:</p><p class="more-info-data">' + coinData['marketCap'].toLocaleString() + '</p></div>');
-                    $coinCirculatingSupply = $('<div class="circulating-supply"><p class="more-info-title">Circulating supply:</p><p class="more-info-data">' + coinData['circulatingSupply'].toLocaleString() + '</p></div>');
-                    $coinTotalSupply = $('<div class="total-supply"><p class="more-info-title">Total supply:</p><p class="more-info-data">' + coinData['totalSupply'].toLocaleString() + '</p></div>');
+                    $coinVolume = $('<div class="volume"><p class="more-info-title">Volume:</p><p class="more-info-data">' + getQuantityElement(coinData['volume']) + '</p></div>');
+                    $coinMarketGap = $('<div class="marketCap"><p class="more-info-title">Market Cap:</p><p class="more-info-data">' + getQuantityElement(coinData['marketCap']) + '</p></div>');
+                    $coinCirculatingSupply = $('<div class="circulating-supply"><p class="more-info-title">Circulating supply:</p><p class="more-info-data">' + getQuantityElement(coinData['circulatingSupply']) + '</p></div>');
+                    $coinTotalSupply = $('<div class="total-supply"><p class="more-info-title">Total supply:</p><p class="more-info-data">' + getQuantityElement(coinData['totalSupply']) + '</p></div>');
                     $coinFirstSeen = $('<div class="first-seen"><p class="more-info-title">First seen:</p><p class="more-info-data">' + getDateElement(coinData['firstSeen']) + '</p></div>');
                     $coinNumberOfMarkets = $('<div class="number-of-markets"><p class="more-info-title">Number of markets:</p><p class="more-info-data">' + coinData['numberOfMarkets'] + '</p></div>');
                     $coinNumberOfExchanges = $('<div class="number-of-exchanges"><p class="more-info-title">Number of exchanges:</p><p class="more-info-data">' + coinData['numberOfExchanges'] + '</p></div>');
@@ -137,7 +140,14 @@ $.fn.attachMoreListener = function() {
     });
 }
 
+$.fn.attachRefreshButtonListener = function() {
+    $('.coin-refresh').on('click', function(){
+        $.fn.fetchCoins();
+    });
+}
+
 $(document).ready(function(){
     $.fn.fetchCoins();
+    $.fn.attachRefreshButtonListener();
     $.fn.attachMoreListener();    
 });
