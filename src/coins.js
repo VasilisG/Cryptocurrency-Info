@@ -32,8 +32,15 @@ $.fn.fetchCoins = function(){
     var $errorCode = $errorArea.children('.code');
     var $messageCode = $errorArea.children('.message');
 
+    var baseCurrency = '?base=' + $(".currency-dropdown option:selected").val();
+    var timePeriod = '&timePeriod?=' + $(".period-dropdown option:selected").val();
+    var sorting = '&sort=' + $(".sort-dropdown option:selected").val();
+    var order = '&order=' + $(".order-dropdown option:selected").val();
+
+    console.log('https://api.coinranking.com/v1/public/coins' + baseCurrency + timePeriod + sorting + order);
+
     $.ajax({
-        url : 'https://api.coinranking.com/v1/public/coins',
+        url : 'https://api.coinranking.com/v1/public/coins' + baseCurrency + timePeriod + sorting + order,
         success: function(data, status, jqXHR){
 
             console.log(data);
