@@ -36,7 +36,7 @@ button:hover:active {
 
 .title {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 .title-header {
@@ -51,8 +51,9 @@ button:hover:active {
     font-style: italic;
     color:#dfcb5d;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 20px;
     letter-spacing: 2px;
+    margin: 10px 0px;
 }
 
 .sections ul {
