@@ -1,9 +1,12 @@
-function getPriceElement(price){
-    return parseFloat(price).toLocaleString();
+const pageSize = 100;
+var currentCoinPage = 0;
+
+function getPriceElement(price, currencySymbol){
+    return !isNaN(price) ? currencySymbol + ' ' + parseFloat(price).toLocaleString() : '-';
 }
 
-function getIntElement(elem){
-    return elem === null ? '-' : elem;
+function getIntElement(elem, currencySymbol){
+    return elem === null ? '-' : currencySymbol + ' ' + elem;
 }
 
 function getDateElement(timestamp){
@@ -21,20 +24,21 @@ function getChangeElement(change){
     else if(change < 0) {
         return  '<span class="negative-change">' + change.toFixed(2) + '</span>';
     }
-    else return '<span class="no-change">' + change.toFixed(2) + '</span>'
+    else if(change == 0){
+        return '<span class="no-change">' + change.toFixed(2) + '</span>';
+    }
+    else return '<span class="no-change">-</span>';
 }
 
 function getDescriptionElement(description){
     return description === null ? '-' : description;
 }
 
-function getQuantityElement(elem){
-    return elem === null ? '-' : elem.toLocaleString();
+function getQuantityElement(elem, currencySymbol){
+    return elem === null ? '-' : currencySymbol + ' ' + elem.toLocaleString();
 }
 
 $.fn.fetchCoins = function(page){
-
-    const pageSize = 100;
 
     var $coinList = $('.coin-list');
 
@@ -42,7 +46,8 @@ $.fn.fetchCoins = function(page){
     var $errorCode = $errorArea.children('.code');
     var $messageCode = $errorArea.children('.message');
 
-    var baseCurrency = '?base=' + $(".currency-dropdown option:selected").val();
+    var baseCurrency = $(".coin-currency-dropdown option:selected").val();
+    var baseCurrencyFilter = '?base=' + $(".coin-currency-dropdown option:selected").val();
     var timePeriod = '&timePeriod=' + $(".period-dropdown option:selected").val();
     var sorting = '&sort=' + $(".sort-dropdown option:selected").val();
     var order = '&order=' + $(".order-dropdown option:selected").val();
@@ -52,7 +57,7 @@ $.fn.fetchCoins = function(page){
     var currencySymbol = baseCurrency == 'USD' ? '$' : '€';
 
     $.ajax({
-        url : 'https://api.coinranking.com/v1/public/coins' + baseCurrency + timePeriod + sorting + order + limit + offset,
+        url : 'https://api.coinranking.com/v1/public/coins' + baseCurrencyFilter + timePeriod + sorting + order + limit + offset,
         success: function(data, status, jqXHR){
 
             console.log(data);
@@ -85,19 +90,19 @@ $.fn.fetchCoins = function(page){
                     $coinName = $('<div class="name"><span>' + coinData['name'] + '</span></div>');
                     $coinSymbol = $('<div class="symbol"><span>' + coinData['symbol'] + '</span></div>');
                     $coinIcon = $('<div class="icon">' + '<img src="' + coinData['iconUrl'] + '"/></div>');
-                    $coinPrice = $('<div class="price"><span>' + currencySymbol + ' ' + getPriceElement(coinData['price']) + '</span></div>');
+                    $coinPrice = $('<div class="price"><span>' + getPriceElement(coinData['price'], currencySymbol) + '</span></div>');
                     $coinChange = $('<div class="change">' + getChangeElement(coinData['change']) + '</div>');
                     $coinAction = $('<div class="more"><span>More<i class="fa fas fa-chevron-down"></i></span></div>');
 
                     $coinDescription = $('<div class="description"><p class="more-info-title">Description:</p><p class="more-info-data">' + getDescriptionElement(coinData['description']) +'</p></div>');
-                    $coinVolume = $('<div class="volume"><p class="more-info-title">Volume:</p><p class="more-info-data">' + getQuantityElement(coinData['volume']) + '</p></div>');
-                    $coinMarketGap = $('<div class="marketCap"><p class="more-info-title">Market Cap:</p><p class="more-info-data">' + getQuantityElement(coinData['marketCap']) + '</p></div>');
-                    $coinCirculatingSupply = $('<div class="circulating-supply"><p class="more-info-title">Circulating supply:</p><p class="more-info-data">' + currencySymbol + ' ' + getQuantityElement(coinData['circulatingSupply']) + '</p></div>');
-                    $coinTotalSupply = $('<div class="total-supply"><p class="more-info-title">Total supply:</p><p class="more-info-data">' + currencySymbol + ' ' + getQuantityElement(coinData['totalSupply']) + '</p></div>');
+                    $coinVolume = $('<div class="volume"><p class="more-info-title">Volume:</p><p class="more-info-data">' + getQuantityElement(coinData['volume'], '') + '</p></div>');
+                    $coinMarketGap = $('<div class="marketCap"><p class="more-info-title">Market Cap:</p><p class="more-info-data">' + getQuantityElement(coinData['marketCap'], currencySymbol) + '</p></div>');
+                    $coinCirculatingSupply = $('<div class="circulating-supply"><p class="more-info-title">Circulating supply:</p><p class="more-info-data">' + getQuantityElement(coinData['circulatingSupply'], currencySymbol) + '</p></div>');
+                    $coinTotalSupply = $('<div class="total-supply"><p class="more-info-title">Total supply:</p><p class="more-info-data">' + getQuantityElement(coinData['totalSupply'], currencySymbol) + '</p></div>');
                     $coinFirstSeen = $('<div class="first-seen"><p class="more-info-title">First seen:</p><p class="more-info-data">' + getDateElement(coinData['firstSeen']) + '</p></div>');
-                    $coinNumberOfMarkets = $('<div class="number-of-markets"><p class="more-info-title">Number of markets:</p><p class="more-info-data">' + getIntElement(coinData['numberOfMarkets']) + '</p></div>');
-                    $coinNumberOfExchanges = $('<div class="number-of-exchanges"><p class="more-info-title">Number of exchanges:</p><p class="more-info-data">' + getIntElement(coinData['numberOfExchanges']) + '</p></div>');
-                    $coinHighestPrice = $('<div class="highest-price"><p class="more-info-title">Highest price:</p><p class="more-info-data">' + currencySymbol + ' ' + getPriceElement(coinData['allTimeHigh']['price']) + '</p></div>');
+                    $coinNumberOfMarkets = $('<div class="number-of-markets"><p class="more-info-title">Number of markets:</p><p class="more-info-data">' + getIntElement(coinData['numberOfMarkets'], '') + '</p></div>');
+                    $coinNumberOfExchanges = $('<div class="number-of-exchanges"><p class="more-info-title">Number of exchanges:</p><p class="more-info-data">' + getIntElement(coinData['numberOfExchanges'], '') + '</p></div>');
+                    $coinHighestPrice = $('<div class="highest-price"><p class="more-info-title">Highest price:</p><p class="more-info-data">' + getPriceElement(coinData['allTimeHigh']['price'], currencySymbol) + '</p></div>');
                     $coinHighestPriceDate = $('<div class="highest-price-date"><p class="more-info-title">Highest price date:</p><p class="more-info-data">' + getDateElement(coinData['allTimeHigh']['timestamp']) + '</p></div>');
 
                     
@@ -159,7 +164,8 @@ $.fn.attachMoreListener = function() {
 $.fn.attachRefreshButtonListener = function() {
     $('.coin-refresh').on('click', function(){
         var currentPage = parseInt($('#coin-current-page').val());
-        $.fn.fetchCoins(currentPage-1);
+        currentCoinPage = currentPage - 1;
+        $.fn.fetchCoins(currentCoinPage);
     });
 }
 
@@ -168,7 +174,8 @@ $.fn.attachPrevPageListener = function() {
         var currentPage = parseInt($('#coin-current-page').val());
         if(currentPage > 1) {
             currentPage--;
-            $.fn.fetchCoins(currentPage - 1);
+            currentCoinPage = currentPage - 1;
+            $.fn.fetchCoins(currentCoinPage);
         }
     });
 }
@@ -179,15 +186,37 @@ $.fn.attachNextPageListener = function() {
         var totalPages = parseInt($('.total-pages').text());
         if(currentPage < totalPages){
             currentPage++;
-            $.fn.fetchCoins(currentPage - 1);
+            currentCoinPage = currentPage - 1;
+            $.fn.fetchCoins(currentCoinPage);
+        }
+    });
+}
+
+$.fn.attachKeyListener = function() {
+    $('#coin-current-page').keypress(function(event){
+        if(event.which == 13){
+            var totalPages = parseInt($('.total-pages').text());
+            var fieldData = $(this).val();
+            var isNumber = /^\d+$/.test(fieldData);
+            if(isNumber){
+                var pageNumber = parseInt(fieldData);
+                if(pageNumber < 1 || pageNumber > totalPages){
+                    $(this).val(currentCoinPage+1);
+                }
+                else {
+                    currentCoinPage = $(this).val()-1;
+                    $.fn.fetchCoins(currentCoinPage);
+                }
+            }
         }
     });
 }
 
 $(document).ready(function(){
-    $.fn.fetchCoins(0);
+    $.fn.fetchCoins(currentCoinPage);
     $.fn.attachRefreshButtonListener();
     $.fn.attachMoreListener(); 
     $.fn.attachPrevPageListener();
-    $.fn.attachNextPageListener();   
+    $.fn.attachNextPageListener();  
+    $.fn.attachKeyListener(); 
 });
