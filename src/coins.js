@@ -2,7 +2,7 @@ const pageSize = 100;
 var currentCoinPage = 0;
 
 function getPriceElement(price, currencySymbol){
-    return !isNaN(price) ? currencySymbol + ' ' + parseFloat(price).toLocaleString() : '-';
+    return isNaN(price) || price === null ? '-' : currencySymbol + ' ' + parseFloat(price).toLocaleString();
 }
 
 function getIntElement(elem, currencySymbol){
