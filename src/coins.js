@@ -28,7 +28,9 @@ function getQuantityElement(elem){
     return elem === null ? '-' : elem.toLocaleString();
 }
 
-$.fn.fetchCoins = function(){
+$.fn.fetchCoins = function(page){
+
+    const pageSize = 100;
 
     var $coinList = $('.coin-list');
 
@@ -41,9 +43,10 @@ $.fn.fetchCoins = function(){
     var sorting = '&sort=' + $(".sort-dropdown option:selected").val();
     var order = '&order=' + $(".order-dropdown option:selected").val();
     var limit = '&limit=100';
+    var offset = '$offset=' + page;
 
     $.ajax({
-        url : 'https://api.coinranking.com/v1/public/coins' + baseCurrency + timePeriod + sorting + order + limit,
+        url : 'https://api.coinranking.com/v1/public/coins' + baseCurrency + timePeriod + sorting + order + limit + offset,
         success: function(data, status, jqXHR){
 
             console.log(data);
@@ -51,12 +54,19 @@ $.fn.fetchCoins = function(){
 
             if(data['status'] === 'success'){
 
+                var stats = data['data']['stats']
+                var totalCoins = stats['total'];
+                var totalPages = parseInt(totalCoins / pageSize) + 1;
+
                 var coins = data['data']['coins'];
 
                 var $coinItem, $coinBasicInfo, $coinMoreInfo;
                 var $coinName, $coinSymbol, $coinIcon, $coinPrice, $coinChange, $coinAction;
                 var $coinDescription, $coinVolume, $coinMarketGap, $coinCirculatingSupply, $coinTotalSupply,
                     $coinFirstSeen, $coinNumberOfMarkets, $coinNumberOfExchanges, $coinHighestPrice, $coinHighestPriceDate;
+
+                $('#coin-current-page').val(page + 1);
+                $('.total-pages').text(totalPages);
 
                 $('.coin-list-item').remove();
 
@@ -146,8 +156,29 @@ $.fn.attachRefreshButtonListener = function() {
     });
 }
 
+$.fn.attachPrevPageListener = function() {
+    $('.prev').on('click', function(){
+        var currentPage = parseInt($('#coin-current-page').val());
+        if(currentPage > 1) {
+            currentPage--;
+            $.fn.fetchCoins(currentPage - 1);
+        }
+    });
+}
+
+$.fn.attachNextPageListener = function() {
+    $('.next').on('click', function(){
+        var currentPage = parseInt($('#coin-current-page').val());
+        var totalPages = parseInt($('.total-pages').val());
+        if(currentPage < totalPages){
+            currentPage++;
+            $.fn.fetchCoins(currentPage - 1);
+        }
+    });
+}
+
 $(document).ready(function(){
-    $.fn.fetchCoins();
+    $.fn.fetchCoins(0);
     $.fn.attachRefreshButtonListener();
     $.fn.attachMoreListener();    
 });
