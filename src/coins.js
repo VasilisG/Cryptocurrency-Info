@@ -2,6 +2,10 @@ function getPriceElement(price){
     return parseFloat(price).toLocaleString();
 }
 
+function getIntElement(elem){
+    return elem === null ? '-' : elem;
+}
+
 function getDateElement(timestamp){
     var date = new Date(timestamp);
     var year = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(date);
@@ -89,8 +93,8 @@ $.fn.fetchCoins = function(page){
                     $coinCirculatingSupply = $('<div class="circulating-supply"><p class="more-info-title">Circulating supply:</p><p class="more-info-data">' + getQuantityElement(coinData['circulatingSupply']) + '</p></div>');
                     $coinTotalSupply = $('<div class="total-supply"><p class="more-info-title">Total supply:</p><p class="more-info-data">' + getQuantityElement(coinData['totalSupply']) + '</p></div>');
                     $coinFirstSeen = $('<div class="first-seen"><p class="more-info-title">First seen:</p><p class="more-info-data">' + getDateElement(coinData['firstSeen']) + '</p></div>');
-                    $coinNumberOfMarkets = $('<div class="number-of-markets"><p class="more-info-title">Number of markets:</p><p class="more-info-data">' + coinData['numberOfMarkets'] + '</p></div>');
-                    $coinNumberOfExchanges = $('<div class="number-of-exchanges"><p class="more-info-title">Number of exchanges:</p><p class="more-info-data">' + coinData['numberOfExchanges'] + '</p></div>');
+                    $coinNumberOfMarkets = $('<div class="number-of-markets"><p class="more-info-title">Number of markets:</p><p class="more-info-data">' + getIntElement(coinData['numberOfMarkets']) + '</p></div>');
+                    $coinNumberOfExchanges = $('<div class="number-of-exchanges"><p class="more-info-title">Number of exchanges:</p><p class="more-info-data">' + getIntElement(coinData['numberOfExchanges']) + '</p></div>');
                     $coinHighestPrice = $('<div class="highest-price"><p class="more-info-title">Highest price:</p><p class="more-info-data">' + getPriceElement(coinData['allTimeHigh']['price']) + '</p></div>');
                     $coinHighestPriceDate = $('<div class="highest-price-date"><p class="more-info-title">Highest price data:</p><p class="more-info-data">' + getDateElement(coinData['allTimeHigh']['timestamp']) + '</p></div>');
 
@@ -152,7 +156,8 @@ $.fn.attachMoreListener = function() {
 
 $.fn.attachRefreshButtonListener = function() {
     $('.coin-refresh').on('click', function(){
-        $.fn.fetchCoins();
+        var currentPage = parseInt($('#coin-current-page').val());
+        $.fn.fetchCoins(currentPage-1);
     });
 }
 
