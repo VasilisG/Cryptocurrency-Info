@@ -43,7 +43,7 @@ $.fn.fetchCoins = function(page){
     var sorting = '&sort=' + $(".sort-dropdown option:selected").val();
     var order = '&order=' + $(".order-dropdown option:selected").val();
     var limit = '&limit=100';
-    var offset = '$offset=' + page;
+    var offset = '&offset=' + page * pageSize;
 
     $.ajax({
         url : 'https://api.coinranking.com/v1/public/coins' + baseCurrency + timePeriod + sorting + order + limit + offset,
@@ -169,7 +169,7 @@ $.fn.attachPrevPageListener = function() {
 $.fn.attachNextPageListener = function() {
     $('.next').on('click', function(){
         var currentPage = parseInt($('#coin-current-page').val());
-        var totalPages = parseInt($('.total-pages').val());
+        var totalPages = parseInt($('.total-pages').text());
         if(currentPage < totalPages){
             currentPage++;
             $.fn.fetchCoins(currentPage - 1);
@@ -180,5 +180,7 @@ $.fn.attachNextPageListener = function() {
 $(document).ready(function(){
     $.fn.fetchCoins(0);
     $.fn.attachRefreshButtonListener();
-    $.fn.attachMoreListener();    
+    $.fn.attachMoreListener(); 
+    $.fn.attachPrevPageListener();
+    $.fn.attachNextPageListener();   
 });
