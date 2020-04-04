@@ -96,7 +96,7 @@ $.fn.fetchCoins = function(page){
                     $coinNumberOfMarkets = $('<div class="number-of-markets"><p class="more-info-title">Number of markets:</p><p class="more-info-data">' + getIntElement(coinData['numberOfMarkets']) + '</p></div>');
                     $coinNumberOfExchanges = $('<div class="number-of-exchanges"><p class="more-info-title">Number of exchanges:</p><p class="more-info-data">' + getIntElement(coinData['numberOfExchanges']) + '</p></div>');
                     $coinHighestPrice = $('<div class="highest-price"><p class="more-info-title">Highest price:</p><p class="more-info-data">' + getPriceElement(coinData['allTimeHigh']['price']) + '</p></div>');
-                    $coinHighestPriceDate = $('<div class="highest-price-date"><p class="more-info-title">Highest price data:</p><p class="more-info-data">' + getDateElement(coinData['allTimeHigh']['timestamp']) + '</p></div>');
+                    $coinHighestPriceDate = $('<div class="highest-price-date"><p class="more-info-title">Highest price date:</p><p class="more-info-data">' + getDateElement(coinData['allTimeHigh']['timestamp']) + '</p></div>');
 
                     
                     $coinBasicInfo.append($coinName);
