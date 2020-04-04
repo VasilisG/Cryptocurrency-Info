@@ -43,7 +43,7 @@ $.fn.fetchCoins = function(page){
     var $messageCode = $errorArea.children('.message');
 
     var baseCurrency = '?base=' + $(".currency-dropdown option:selected").val();
-    var timePeriod = '&timePeriod?=' + $(".period-dropdown option:selected").val();
+    var timePeriod = '&timePeriod=' + $(".period-dropdown option:selected").val();
     var sorting = '&sort=' + $(".sort-dropdown option:selected").val();
     var order = '&order=' + $(".order-dropdown option:selected").val();
     var limit = '&limit=100';
