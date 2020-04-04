@@ -49,6 +49,8 @@ $.fn.fetchCoins = function(page){
     var limit = '&limit=100';
     var offset = '&offset=' + page * pageSize;
 
+    var currencySymbol = baseCurrency == 'USD' ? '$' : '€';
+
     $.ajax({
         url : 'https://api.coinranking.com/v1/public/coins' + baseCurrency + timePeriod + sorting + order + limit + offset,
         success: function(data, status, jqXHR){
@@ -83,19 +85,19 @@ $.fn.fetchCoins = function(page){
                     $coinName = $('<div class="name"><span>' + coinData['name'] + '</span></div>');
                     $coinSymbol = $('<div class="symbol"><span>' + coinData['symbol'] + '</span></div>');
                     $coinIcon = $('<div class="icon">' + '<img src="' + coinData['iconUrl'] + '"/></div>');
-                    $coinPrice = $('<div class="price"><span>' + getPriceElement(coinData['price']) + '</span></div>');
+                    $coinPrice = $('<div class="price"><span>' + currencySymbol + ' ' + getPriceElement(coinData['price']) + '</span></div>');
                     $coinChange = $('<div class="change">' + getChangeElement(coinData['change']) + '</div>');
                     $coinAction = $('<div class="more"><span>More<i class="fa fas fa-chevron-down"></i></span></div>');
 
                     $coinDescription = $('<div class="description"><p class="more-info-title">Description:</p><p class="more-info-data">' + getDescriptionElement(coinData['description']) +'</p></div>');
                     $coinVolume = $('<div class="volume"><p class="more-info-title">Volume:</p><p class="more-info-data">' + getQuantityElement(coinData['volume']) + '</p></div>');
                     $coinMarketGap = $('<div class="marketCap"><p class="more-info-title">Market Cap:</p><p class="more-info-data">' + getQuantityElement(coinData['marketCap']) + '</p></div>');
-                    $coinCirculatingSupply = $('<div class="circulating-supply"><p class="more-info-title">Circulating supply:</p><p class="more-info-data">' + getQuantityElement(coinData['circulatingSupply']) + '</p></div>');
-                    $coinTotalSupply = $('<div class="total-supply"><p class="more-info-title">Total supply:</p><p class="more-info-data">' + getQuantityElement(coinData['totalSupply']) + '</p></div>');
+                    $coinCirculatingSupply = $('<div class="circulating-supply"><p class="more-info-title">Circulating supply:</p><p class="more-info-data">' + currencySymbol + ' ' + getQuantityElement(coinData['circulatingSupply']) + '</p></div>');
+                    $coinTotalSupply = $('<div class="total-supply"><p class="more-info-title">Total supply:</p><p class="more-info-data">' + currencySymbol + ' ' + getQuantityElement(coinData['totalSupply']) + '</p></div>');
                     $coinFirstSeen = $('<div class="first-seen"><p class="more-info-title">First seen:</p><p class="more-info-data">' + getDateElement(coinData['firstSeen']) + '</p></div>');
                     $coinNumberOfMarkets = $('<div class="number-of-markets"><p class="more-info-title">Number of markets:</p><p class="more-info-data">' + getIntElement(coinData['numberOfMarkets']) + '</p></div>');
                     $coinNumberOfExchanges = $('<div class="number-of-exchanges"><p class="more-info-title">Number of exchanges:</p><p class="more-info-data">' + getIntElement(coinData['numberOfExchanges']) + '</p></div>');
-                    $coinHighestPrice = $('<div class="highest-price"><p class="more-info-title">Highest price:</p><p class="more-info-data">' + getPriceElement(coinData['allTimeHigh']['price']) + '</p></div>');
+                    $coinHighestPrice = $('<div class="highest-price"><p class="more-info-title">Highest price:</p><p class="more-info-data">' + currencySymbol + ' ' + getPriceElement(coinData['allTimeHigh']['price']) + '</p></div>');
                     $coinHighestPriceDate = $('<div class="highest-price-date"><p class="more-info-title">Highest price date:</p><p class="more-info-data">' + getDateElement(coinData['allTimeHigh']['timestamp']) + '</p></div>');
 
                     
