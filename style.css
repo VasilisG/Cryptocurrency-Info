@@ -212,6 +212,10 @@ select {
     display: none;
 }
 
+.main-coin-area {
+    position: relative;
+}
+
 .coins-area .currency-selector {
     text-align: left;
     margin: 0;
@@ -234,6 +238,10 @@ select {
 .coin-list {
     height: 600px;
     overflow-y: scroll;
+}
+
+.stand-by {
+    opacity: 0.2;
 }
 
 .basic-info {
@@ -371,6 +379,32 @@ select {
     cursor: pointer;
     position: relative;
     top: 3px;
+}
+
+.coin-loading-overlay {
+    position: absolute;
+    z-index: 10;
+    height: 200px;
+    width: 300px;
+    top: calc(50% - 100px);
+    left: calc(50% - 150px);
+    border-radius: 20px;
+    background: #000;
+    opacity: 0.6;
+    display: none;
+}
+
+.overlay-active {
+    display: block !important;
+}
+
+.loading-image {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    top: calc(50% - 25px);
+    left: calc(50% - 25px);
+    
 }
 /* Coins area CSS end. */
 

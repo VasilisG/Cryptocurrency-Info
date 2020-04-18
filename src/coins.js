@@ -41,6 +41,7 @@ function getQuantityElement(elem, currencySymbol){
 $.fn.fetchCoins = function(page){
 
     var $coinList = $('.coin-list');
+    var $coinLoadingOverlay = $('.coin-loading-overlay');
 
     var $errorArea = $(".error-area");
     var $errorCode = $errorArea.children('.code');
@@ -56,12 +57,19 @@ $.fn.fetchCoins = function(page){
 
     var currencySymbol = baseCurrency == 'USD' ? '$' : '€';
 
+    $coinList.addClass('stand-by');
+    $coinLoadingOverlay.addClass('overlay-active');
+
+
     $.ajax({
         url : 'https://api.coinranking.com/v1/public/coins' + baseCurrencyFilter + timePeriod + sorting + order + limit + offset,
         success: function(data, status, jqXHR){
 
             console.log(data);
             console.log(data['status']);
+
+            $coinList.removeClass('stand-by');
+            $coinLoadingOverlay.removeClass('overlay-active');
 
             if(data['status'] === 'success'){
 
