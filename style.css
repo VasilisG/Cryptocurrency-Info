@@ -199,6 +199,7 @@ select {
     top: 0;
     z-index: 1;
     border-bottom: 1px solid #0581D4;
+    border-top: 1px solid #0581D4;
 }
 
 .header-container div {
@@ -232,7 +233,6 @@ select {
     display: flex;
     justify-content: space-between;
     padding: 30px 20px;
-    border-bottom: 1px solid #0581D4;
 }
 
 .coin-list {
