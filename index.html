@@ -10,6 +10,7 @@
         <script src="src/stats.js"></script>
         <script src="src/tabs.js"></script>
         <script src="src/coins.js"></script>
+        <script src="src/markets.js"></script>
     </head>
     <body>
         <div class="container">
@@ -178,9 +179,9 @@
                                 <div class="header-container">
                                     <div class="source-name-header">SOURCE NAME</div>
                                     <div class="source-icon-header">ICON</div>
-                                    <div class="source-volume-header">VOLUME</div>
-                                    <div class="source-price-header">PRICE</div>
-                                    <div class="source-market-share-header">MARKET SHARE</div>
+                                    <div class="source-volume-header">VOLUME ($)</div>
+                                    <div class="source-price-header">PRICE ($)</div>
+                                    <div class="source-market-share-header">MARKET SHARE (%)</div>
                                 </div>
                                 <div class="market-list-item">
                                     <div class="basic-info">
@@ -198,7 +199,7 @@
                             <div class="pagination-control">
                                 <span>Page</span>
                                 <span class='prev'><i class="fa fas fa-chevron-left"></i></span>
-                                <input type="number" id="coin-current-page"/>
+                                <input type="number" id="market-current-page"/>
                                 <span class="next"><i class="fa fas fa-chevron-right"></i></span>
                                 <span>of</span>
                                 <span class="total-pages">100</span> 

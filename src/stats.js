@@ -11,7 +11,6 @@ $.fn.fetchStats = function(){
     var $messageCode = $errorArea.children('.message');
 
     var currency = $(".currency-dropdown option:selected").val();
-    console.log(currency);
     var symbol = currency == 'EUR' ? '€' : '$';
 
     $.ajax({
