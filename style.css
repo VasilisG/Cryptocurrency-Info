@@ -412,6 +412,30 @@ select {
 .markets-area {
     display: none;
 }
+
+.market-option-area {
+    display: flex;
+    padding: 30px 20px;
+}
+
+.market-sort-selector, .market-order-selector {
+    flex: 1;
+}
+
+.market-refresh-container {
+    flex: 2;
+    text-align: right;
+}
+
+.market-list .header-container div {
+    width: 20%;
+}
+
+.market-pagination {
+    padding: 20px 40px;
+    text-align: right;
+    border-top: 1px solid #0581D4;
+}
 /* Markets area CSS end. */
 
 /* Exchanges area CSS start. */
