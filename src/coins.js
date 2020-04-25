@@ -178,7 +178,7 @@ $.fn.attachRefreshButtonListener = function() {
 }
 
 $.fn.attachPrevPageListener = function() {
-    $('.prev').on('click', function(){
+    $('.coin-pagination .prev').on('click', function(){
         var currentPage = parseInt($('#coin-current-page').val());
         if(currentPage > 1) {
             currentPage--;
@@ -189,7 +189,7 @@ $.fn.attachPrevPageListener = function() {
 }
 
 $.fn.attachNextPageListener = function() {
-    $('.next').on('click', function(){
+    $('.coin-pagination .next').on('click', function(){
         var currentPage = parseInt($('#coin-current-page').val());
         var totalPages = parseInt($('.total-pages').text());
         if(currentPage < totalPages){
