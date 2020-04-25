@@ -427,7 +427,7 @@ select {
     text-align: right;
 }
 
-.market-list .header-container div {
+.market-list .header-container div, .market-list .basic-info div {
     width: 20%;
 }
 

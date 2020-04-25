@@ -65,9 +65,6 @@ $.fn.fetchCoins = function(page){
         url : 'https://api.coinranking.com/v1/public/coins' + baseCurrencyFilter + timePeriod + sorting + order + limit + offset,
         success: function(data, status, jqXHR){
 
-            console.log(data);
-            console.log(data['status']);
-
             $coinList.removeClass('stand-by');
             $coinLoadingOverlay.removeClass('overlay-active');
 
