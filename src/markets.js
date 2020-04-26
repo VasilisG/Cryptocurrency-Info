@@ -30,7 +30,7 @@ $.fn.fetchMarkets = function(page){
 
                 var stats = data['data']['stats']
                 var totalMarkets = stats['total'];
-                var totalPages = parseInt(totalMarkets / pageMarketSize) + 1;
+                var totalMarketPages = parseInt(totalMarkets / pageMarketSize) + 1;
 
                 var markets = data['data']['markets'];
 
@@ -38,7 +38,7 @@ $.fn.fetchMarkets = function(page){
                 var $marketItem, $marketBasicInfo;
 
                 $('.market-pagination #market-current-page').val(page + 1);
-                $('.market-pagination .total-pages').text(totalPages);
+                $('.market-pagination .total-pages').text(totalMarketPages);
 
                 $('.market-list-item').remove();
 
@@ -73,7 +73,7 @@ $.fn.fetchMarkets = function(page){
     });
 }
 
-$.fn.attachRefreshButtonListener = function() {
+$.fn.attachMarketRefreshButtonListener = function() {
     $('.market-refresh').on('click', function(){
         var currentPage = parseInt($('#market-current-page').val());
         currentMarketPage = currentPage - 1;
@@ -81,7 +81,7 @@ $.fn.attachRefreshButtonListener = function() {
     });
 }
 
-$.fn.attachPrevPageListener = function() {
+$.fn.attachMarketPrevPageListener = function() {
     $('.market-pagination .prev').on('click', function(){
         var currentPage = parseInt($('#market-current-page').val());
         if(currentPage > 1) {
@@ -92,11 +92,11 @@ $.fn.attachPrevPageListener = function() {
     });
 }
 
-$.fn.attachNextPageListener = function() {
+$.fn.attachMarketNextPageListener = function() {
     $('.market-pagination .next').on('click', function(){
         var currentPage = parseInt($('#market-current-page').val());
-        var totalPages = parseInt($('.total-pages').text());
-        if(currentPage < totalPages){
+        var totalMarketPages = parseInt($('.total-pages').text());
+        if(currentPage < totalMarketPages){
             currentPage++;
             currentMarketPage = currentPage - 1;
             $.fn.fetchMarkets(currentMarketPage);
@@ -104,15 +104,15 @@ $.fn.attachNextPageListener = function() {
     });
 }
 
-$.fn.attachKeyListener = function() {
+$.fn.attachMarketKeyListener = function() {
     $('#market-current-page').keypress(function(event){
         if(event.which == 13){
-            var totalPages = parseInt($('.total-pages').text());
+            var totalMarketPages = parseInt($('.total-pages').text());
             var fieldData = $(this).val();
             var isNumber = /^\d+$/.test(fieldData);
             if(isNumber){
                 var pageNumber = parseInt(fieldData);
-                if(pageNumber < 1 || pageNumber > totalPages){
+                if(pageNumber < 1 || pageNumber > totalMarketPages){
                     $(this).val(currentMarketPage+1);
                 }
                 else {
@@ -126,9 +126,8 @@ $.fn.attachKeyListener = function() {
 
 $(document).ready(function(){
     $.fn.fetchMarkets(currentMarketPage);
-    $.fn.attachRefreshButtonListener();
-    $.fn.attachMoreListener(); 
-    $.fn.attachPrevPageListener();
-    $.fn.attachNextPageListener();  
-    $.fn.attachKeyListener(); 
+    $.fn.attachMarketRefreshButtonListener(); 
+    $.fn.attachMarketPrevPageListener();
+    $.fn.attachMarketNextPageListener();  
+    $.fn.attachMarketKeyListener(); 
 });
