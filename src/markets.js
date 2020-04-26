@@ -73,6 +73,62 @@ $.fn.fetchMarkets = function(page){
     });
 }
 
+$.fn.attachRefreshButtonListener = function() {
+    $('.market-refresh').on('click', function(){
+        var currentPage = parseInt($('#market-current-page').val());
+        currentMarketPage = currentPage - 1;
+        $.fn.fetchMarkets(currentMarketPage);
+    });
+}
+
+$.fn.attachPrevPageListener = function() {
+    $('.market-pagination .prev').on('click', function(){
+        var currentPage = parseInt($('#market-current-page').val());
+        if(currentPage > 1) {
+            currentPage--;
+            currentMarketPage = currentPage - 1;
+            $.fn.fetchMarkets(currentMarketPage);
+        }
+    });
+}
+
+$.fn.attachNextPageListener = function() {
+    $('.market-pagination .next').on('click', function(){
+        var currentPage = parseInt($('#market-current-page').val());
+        var totalPages = parseInt($('.total-pages').text());
+        if(currentPage < totalPages){
+            currentPage++;
+            currentMarketPage = currentPage - 1;
+            $.fn.fetchMarkets(currentMarketPage);
+        }
+    });
+}
+
+$.fn.attachKeyListener = function() {
+    $('#market-current-page').keypress(function(event){
+        if(event.which == 13){
+            var totalPages = parseInt($('.total-pages').text());
+            var fieldData = $(this).val();
+            var isNumber = /^\d+$/.test(fieldData);
+            if(isNumber){
+                var pageNumber = parseInt(fieldData);
+                if(pageNumber < 1 || pageNumber > totalPages){
+                    $(this).val(currentMarketPage+1);
+                }
+                else {
+                    currentMarketPage = $(this).val()-1;
+                    $.fn.fetchMarkets(currentMarketPage);
+                }
+            }
+        }
+    });
+}
+
 $(document).ready(function(){
     $.fn.fetchMarkets(currentMarketPage);
+    $.fn.attachRefreshButtonListener();
+    $.fn.attachMoreListener(); 
+    $.fn.attachPrevPageListener();
+    $.fn.attachNextPageListener();  
+    $.fn.attachKeyListener(); 
 });
