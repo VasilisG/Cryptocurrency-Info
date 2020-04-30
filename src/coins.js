@@ -82,7 +82,7 @@ $.fn.fetchCoins = function(page){
                     $coinFirstSeen, $coinNumberOfMarkets, $coinNumberOfExchanges, $coinHighestPrice, $coinHighestPriceDate;
 
                 $('#coin-current-page').val(page + 1);
-                $('.total-pages').text(totalPages);
+                $('.coin-pagination .total-pages').text(totalPages);
 
                 $('.coin-list-item').remove();
 
