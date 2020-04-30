@@ -469,6 +469,10 @@ select {
     height: 600px;
     overflow-y: scroll;
 }
+
+.source-price span {
+    color: #f0f095;
+}
 /* Markets area CSS end. */
 
 /* Exchanges area CSS start. */
