@@ -492,10 +492,62 @@ select {
     text-align: right;
 }
 
-.exchanges-pagination {
+.exchange-pagination {
     padding: 20px 40px;
     text-align: right;
     border-top: 1px solid #0581D4;
+}
+
+.exchange-loading-overlay {
+    position: absolute;
+    z-index: 10;
+    height: 200px;
+    width: 300px;
+    top: calc(50% - 100px);
+    left: calc(50% - 150px);
+    border-radius: 20px;
+    background: #000;
+    opacity: 0.6;
+    display: none;
+}
+
+#exchange-current-page {
+    width: 60px;
+    height: 30px;
+    text-align: center;
+    background-color: #00385e;
+    border: 1px solid #0581D4;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.exchange-icon img {
+    width: 30px;
+    height: 30px;
+}
+
+.exchange-list {
+    height: 600px;
+    overflow-y: scroll;
+}
+
+.exchange-volume span {
+    color: #ce9b20;
+}
+
+.exchange-website a {
+    text-decoration: none;
+    color: #b7891c;
+    transition: all 0.4s ease;
+}
+
+.exchange-website a:hover {
+    color: #ffcd57;
+}
+
+.fa.fas.fa-link {
+    margin-left: 5px;
 }
 /* Exchanges area CSS end. */
 

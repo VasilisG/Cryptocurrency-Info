@@ -11,6 +11,7 @@
         <script src="src/tabs.js"></script>
         <script src="src/coins.js"></script>
         <script src="src/markets.js"></script>
+        <script src="src/exchanges.js"></script>
     </head>
     <body>
         <div class="container">
@@ -235,6 +236,9 @@
                         </div>
 
                         <div class="main-exchanges-area">
+                            <div class="exchange-loading-overlay">
+                                <img class="loading-image" src="assets/loading_image.gif" alt="Loading image"/>
+                            </div>
                             <div class="exchange-list">
                                 <div class="header-container">
                                     <div class="exchange-name-header">SOURCE NAME</div>
@@ -257,11 +261,11 @@
                             </div>
                         </div>
 
-                        <div class="exchanges-pagination">
+                        <div class="exchange-pagination">
                             <div class="pagination-control">
                                 <span>Page</span>
                                 <span class='prev'><i class="fa fas fa-chevron-left"></i></span>
-                                <input type="number" id="market-current-page"/>
+                                <input type="number" id="exchange-current-page"/>
                                 <span class="next"><i class="fa fas fa-chevron-right"></i></span>
                                 <span>of</span>
                                 <span class="total-pages">100</span> 
