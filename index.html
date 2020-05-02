@@ -212,15 +212,60 @@
                     <div class="exchanges-area">
 
                         <div class="exchanges-option-area">
+                            <div class="exchange-sort-selector">
+                                <span>Sorting:</span>
+                                <select class="sort-dropdown">
+                                    <option value="volume" selected>Volume</option>
+                                    <option value="price">Price</option>
+                                    <option value="numberOfMarkets">Number of markets</option>
+                                </select>
+                            </div>
 
+                            <div class="exchange-order-selector">
+                                <span>Order:</span>
+                                <select class="order-dropdown">
+                                    <option value="desc" selected>Descending</option>
+                                    <option value="asc">Ascending</option>
+                                </select>
+                            </div>
+
+                            <div class="exchange-refresh-container">
+                                <button class="exchange-refresh">Refresh</button>
+                            </div>
                         </div>
 
                         <div class="main-exchanges-area">
-
+                            <div class="exchange-list">
+                                <div class="header-container">
+                                    <div class="exchange-name-header">SOURCE NAME</div>
+                                    <div class="exchange-icon-header">ICON</div>
+                                    <div class="exchange-volume-header">VOLUME ($)</div>
+                                    <div class="exchange-number-of-markets-header">NUMBER OF MARKETS</div>
+                                    <div class="exchange-market-share-header">MARKET SHARE (%)</div>
+                                    <div class="exchange-website-header">WEBSITE URL</div>
+                                </div>
+                                <div class="exchange-list-item">
+                                    <div class="basic-info">
+                                        <div class="exchange-name">Demo name</div>
+                                        <div class="exchange-icon">Demo icon</div>
+                                        <div class="exchange-volume">Demo volume</div>
+                                        <div class="exchange-number-of-markets">Demo number of markets</div>
+                                        <div class="exchange-market-share">Demo market share</div>
+                                        <div class="exchange-website">Demo website url</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="exchanges-pagination">
-
+                            <div class="pagination-control">
+                                <span>Page</span>
+                                <span class='prev'><i class="fa fas fa-chevron-left"></i></span>
+                                <input type="number" id="market-current-page"/>
+                                <span class="next"><i class="fa fas fa-chevron-right"></i></span>
+                                <span>of</span>
+                                <span class="total-pages">100</span> 
+                            </div>
                         </div>
                         
                     </div>
