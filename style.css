@@ -477,6 +477,20 @@ select {
 .exchanges-area {
     display: none;
 }
+
+.exchanges-option-area {
+    display: flex;
+    padding: 30px 20px;
+}
+
+.exchange-sort-selector, .exchange-order-selector {
+    flex: 1;
+}
+
+.exchange-refresh-container {
+    flex: 2;
+    text-align: right;
+}
 /* Exchanges area CSS end. */
 
 /* Get coin area CSS start. */
