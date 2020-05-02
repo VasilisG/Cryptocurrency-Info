@@ -551,18 +551,6 @@ select {
 }
 /* Exchanges area CSS end. */
 
-/* Get coin area CSS start. */
-.get-coin-area {
-    display: none;
-}
-/* Get coin area CSS end. */
-
-/* Get coin history area CSS start. */
-.get-coin-history-area {
-    display: none;
-}
-/* Get coin history area CSS end. */
-
 /*
 https://docs.coinranking.com/
 https://api.coinranking.com/v1/public/stats
