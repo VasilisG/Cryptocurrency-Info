@@ -98,7 +98,7 @@ $.fn.attachExchangePrevPageListener = function() {
 $.fn.attachExchangeNextPageListener = function() {
     $('.exchange-pagination .next').on('click', function(){
         var currentPage = parseInt($('#exchange-current-page').val());
-        var totalExchangePages = parseInt($('.total-pages').text());
+        var totalExchangePages = parseInt($('.exchange-pagination .total-pages').text());
         if(currentPage < totalExchangePages){
             currentPage++;
             currentExchangePage = currentPage - 1;
@@ -110,7 +110,7 @@ $.fn.attachExchangeNextPageListener = function() {
 $.fn.attachExchangeKeyListener = function() {
     $('#exchange-current-page').keypress(function(event){
         if(event.which == 13){
-            var totalExchangePages = parseInt($('.total-pages').text());
+            var totalExchangePages = parseInt($('.exchange-pagination .total-pages').text());
             var fieldData = $(this).val();
             var isNumber = /^\d+$/.test(fieldData);
             if(isNumber){

@@ -72,8 +72,8 @@ $.fn.fetchCoins = function(page){
 
                 var stats = data['data']['stats']
                 var totalCoins = stats['total'];
-                var totalPages = parseInt(totalCoins / pageSize) + 1;
 
+                totalPages = parseInt(totalCoins / pageSize) + 1;
                 var coins = data['data']['coins'];
 
                 var $coinItem, $coinBasicInfo, $coinMoreInfo;
@@ -188,7 +188,7 @@ $.fn.attachPrevPageListener = function() {
 $.fn.attachNextPageListener = function() {
     $('.coin-pagination .next').on('click', function(){
         var currentPage = parseInt($('#coin-current-page').val());
-        var totalPages = parseInt($('.total-pages').text());
+        var totalPages = parseInt($('.coin-pagination .total-pages').text());
         if(currentPage < totalPages){
             currentPage++;
             currentCoinPage = currentPage - 1;
@@ -200,7 +200,7 @@ $.fn.attachNextPageListener = function() {
 $.fn.attachKeyListener = function() {
     $('#coin-current-page').keypress(function(event){
         if(event.which == 13){
-            var totalPages = parseInt($('.total-pages').text());
+            var totalPages = parseInt($('.coin-pagination .total-pages').text());
             var fieldData = $(this).val();
             var isNumber = /^\d+$/.test(fieldData);
             if(isNumber){

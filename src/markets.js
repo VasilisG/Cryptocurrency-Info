@@ -95,7 +95,7 @@ $.fn.attachMarketPrevPageListener = function() {
 $.fn.attachMarketNextPageListener = function() {
     $('.market-pagination .next').on('click', function(){
         var currentPage = parseInt($('#market-current-page').val());
-        var totalMarketPages = parseInt($('.total-pages').text());
+        var totalMarketPages = parseInt($('.market-pagination .total-pages').text());
         if(currentPage < totalMarketPages){
             currentPage++;
             currentMarketPage = currentPage - 1;
@@ -107,7 +107,7 @@ $.fn.attachMarketNextPageListener = function() {
 $.fn.attachMarketKeyListener = function() {
     $('#market-current-page').keypress(function(event){
         if(event.which == 13){
-            var totalMarketPages = parseInt($('.total-pages').text());
+            var totalMarketPages = parseInt($('.market-pagination .total-pages').text());
             var fieldData = $(this).val();
             var isNumber = /^\d+$/.test(fieldData);
             if(isNumber){
