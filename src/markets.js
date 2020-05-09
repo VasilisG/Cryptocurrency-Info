@@ -5,6 +5,10 @@ function getQuantityElement(elem){
     return elem === null ? '-' :  elem.toLocaleString();
 }
 
+function getImage(elem){
+    return elem != null ? elem : './assets/no-logo.jpg';
+}
+
 $.fn.fetchMarkets = function(page){
 
     var $errorArea = $(".error-area");
@@ -48,7 +52,7 @@ $.fn.fetchMarkets = function(page){
                     $marketBasicInfo = $('<div class="basic-info"></div>');
 
                     $sourceName = $('<div class="source-name"><span>' + marketData['sourceName'] + '</span></div>');
-                    $sourceIcon = $('<div class="source-icon"><img src="' + marketData['sourceIconUrl'] + '"/></div>');
+                    $sourceIcon = $('<div class="source-icon"><img src="' + getImage(marketData['sourceIconUrl']) + '"/></div>');
                     $sourceVolume = $('<div class="source-volume"><span>' + getQuantityElement(marketData['volume']) + '</span></div>');
                     $sourcePrice = $('<div class="source-price"><span>' + getQuantityElement(marketData['price']) + '</span></div>');
                     $sourceMarketShare = $('<div class="source-market-share"><span>' + getQuantityElement(marketData['marketShare']) + '</span></div>');

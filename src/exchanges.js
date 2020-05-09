@@ -5,6 +5,10 @@ function getQuantityElement(elem){
     return elem === null ? '-' :  elem.toLocaleString();
 }
 
+function getImage(elem){
+    return elem != null ? elem : './assets/no-logo.jpg';
+}
+
 $.fn.fetchExchanges = function(page){
 
     var $errorArea = $(".error-area");
@@ -48,7 +52,7 @@ $.fn.fetchExchanges = function(page){
                     $exchangeBasicInfo = $('<div class="basic-info"></div>');
 
                     $exchangeName = $('<div class="exchange-name"><span>' + exchangeData['name'] + '</span></div>');
-                    $exchangeIcon = $('<div class="exchange-icon"><img src="' + exchangeData['iconUrl'] + '"/></div>');
+                    $exchangeIcon = $('<div class="exchange-icon"><img src="' + getImage(exchangeData['iconUrl']) + '"/></div>');
                     $exchangeVolume = $('<div class="exchange-volume"><span>' + getQuantityElement(exchangeData['volume']) + '</span></div>');
                     $exchangePrice = $('<div class="exchange-number-of-markets"><span>' + exchangeData['numberOfMarkets'] + '</span></div>');
                     $exchangeMarketShare = $('<div class="exchange-market-share"><span>' + getQuantityElement(exchangeData['marketShare']) + '</span></div>');

@@ -38,6 +38,10 @@ function getQuantityElement(elem, currencySymbol){
     return elem === null ? '-' : currencySymbol + ' ' + elem.toLocaleString();
 }
 
+function getImage(elem){
+    return elem != null ? elem : './assets/no-logo.jpg';
+}
+
 $.fn.fetchCoins = function(page){
 
     var $coinList = $('.coin-list');
@@ -94,7 +98,7 @@ $.fn.fetchCoins = function(page){
 
                     $coinName = $('<div class="name"><span>' + coinData['name'] + '</span></div>');
                     $coinSymbol = $('<div class="symbol"><span>' + coinData['symbol'] + '</span></div>');
-                    $coinIcon = $('<div class="icon">' + '<img src="' + coinData['iconUrl'] + '"/></div>');
+                    $coinIcon = $('<div class="icon">' + '<img src="' + getImage(coinData['iconUrl']) + '"/></div>');
                     $coinPrice = $('<div class="price"><span>' + getPriceElement(coinData['price'], currencySymbol) + '</span></div>');
                     $coinChange = $('<div class="change">' + getChangeElement(coinData['change']) + '</div>');
                     $coinAction = $('<div class="more"><span>More<i class="fa fas fa-chevron-down"></i></span></div>');
