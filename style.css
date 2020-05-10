@@ -45,7 +45,7 @@ button:hover:active {
 }
 
 .container {
-    width: 80%;
+    width: 90%;
     margin: auto;
 }
 
@@ -550,6 +550,20 @@ select {
     margin-left: 5px;
 }
 /* Exchanges area CSS end. */
+
+/* Responsive start. */
+@media only screen and (max-width: 1400px) {
+    .container {
+        width: 95%;
+    }
+}
+
+@media only screen and (max-width: 1260px) {
+    .container {
+        width: 100%;
+    }
+}
+/* Responsive end. */
 
 /*
 https://docs.coinranking.com/
