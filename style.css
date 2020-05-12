@@ -601,6 +601,15 @@ select {
         width: 100% !important;
         text-align: center;
     }
+    .action-header, .more, .more-info {
+        display: none;
+    }
+    .header-container div, .basic-info div {
+        width: 25%;
+    }
+    .icon-header, .icon {
+        display: none;
+    }    
 }
 
 @media only screen and (max-width: 550px) {
