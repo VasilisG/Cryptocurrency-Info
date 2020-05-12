@@ -613,6 +613,18 @@ select {
 
 }
 
+@media only screen and (max-width: 395px) {
+    .refresh {
+        margin-left: 0px;
+    }
+}
+
+@media only screen and (max-width: 365px) {
+    .refresh {
+        margin-top: 60px;
+    }
+} 
+
 @media only screen and (max-width: 380px) {
     .general-info, .error-title {
         font-size: 18px !important;
