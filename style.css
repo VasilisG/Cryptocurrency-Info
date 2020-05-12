@@ -574,8 +574,7 @@ select {
     .title-header {
         font-size: 40px;
     }
-    .stats-area-inner {
-        display: flex;
+    .stats-area-inner p {
         font-size: 14px;
     }
 }
