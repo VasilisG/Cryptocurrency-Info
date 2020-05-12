@@ -574,6 +574,10 @@ select {
     .title-header {
         font-size: 40px;
     }
+    .stats-area-inner {
+        display: flex;
+        font-size: 14px;
+    }
 }
 
 @media only screen and (max-width: 550px) {
