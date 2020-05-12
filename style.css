@@ -571,6 +571,19 @@ select {
     }
 }
 
+@media only screen and (max-width: 750px) {
+    .general-info, .error-title {
+        font-size: 24px !important;
+        text-align: center;
+    }
+    .currency-selector {
+        text-align: center;
+    }
+    .currency-selector span {
+        margin-right: 5px;
+    }
+}
+
 @media only screen and (max-width: 650px) {
     .title-header {
         font-size: 40px;
@@ -593,10 +606,6 @@ select {
 @media only screen and (max-width: 550px) {
     .title-header {
         font-size: 30px;
-    }
-    .general-info, .error-title {
-        font-size: 24px !important;
-        text-align: center;
     }
 }
 
