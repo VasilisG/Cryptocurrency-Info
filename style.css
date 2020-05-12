@@ -619,7 +619,12 @@ select {
 }
 
 @media only screen and (max-width: 450px) {
-
+    .header-container div {
+        font-size: 12px;
+    }
+    .basic-info div span {
+        font-size: 14px;
+    }
 }
 
 @media only screen and (max-width: 395px) {
@@ -643,6 +648,9 @@ select {
 @media only screen and (max-width: 350px) {
     .title-header {
         font-size: 24px;
+    }
+    .basic-info div span {
+        font-size: 12px;
     }
 }
 /* Responsive end. */
