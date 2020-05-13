@@ -699,6 +699,15 @@ select {
     }
 }
 
+@media only screen and (max-width: 500px) {
+    .source-volume-header, .source-volume {
+        display: none;
+    }
+    .market-list .header-container div, .market-list .basic-info div {
+        width: 33.3%;
+    }
+}
+
 @media only screen and (max-width: 450px) {
     .header-container div {
         font-size: 12px;
@@ -708,6 +717,9 @@ select {
     }
     .market-option-area span {
         margin-bottom: 20px;
+    }
+    .sections ul li {
+        font-size: 14px;
     }
 }
 
@@ -720,6 +732,18 @@ select {
 @media only screen and (max-width: 395px) {
     .refresh {
         margin: 60px 30px 0px 30px;
+    }
+}
+
+@media only screen and (max-width: 350px) {
+    .source-volume-header, .source-volume {
+        display: none;
+    }
+    .market-list .header-container div, .market-list .basic-info div {
+        width: 33.3% !important;
+    }
+    .sections ul li {
+        font-size: 12px;
     }
 }
 
