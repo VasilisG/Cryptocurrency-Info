@@ -563,11 +563,36 @@ select {
     .container {
         width: 100%;
     }
+    .coin-currency-selector span, .coin-period-selector span, .coin-sort-selector span, .coin-order-selector span {
+        display: block;
+    }
+    .coin-refresh {
+        position: relative;
+        top: 40%;
+    }
 }
 
 @media only screen and (max-width: 900px) {
     .title-header {
         font-size: 50px;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .coin-options-area {
+        flex-wrap: wrap;
+    }
+    .coin-options-area div {
+        margin-right: 30px;
+    }
+    .coin-options-area div select {
+        width: 200px;
+        margin-bottom: 40px;
+    }
+    .coin-refresh {
+        position: static !important;
+        top: unset;
+        margin-top: 60px;
     }
 }
 
@@ -581,6 +606,9 @@ select {
     }
     .currency-selector span {
         margin-right: 5px;
+    }
+    .coin-options-area div select {
+        width: 180px;
     }
 }
 
@@ -609,12 +637,30 @@ select {
     }
     .icon-header, .icon {
         display: none;
+    }
+    .coin-options-area div select {
+        width: 200px;
     }    
 }
 
 @media only screen and (max-width: 550px) {
     .title-header {
         font-size: 30px;
+    }
+    .coin-options-area {
+        flex-direction: column;
+    }
+    .coin-currency-selector span, .coin-period-selector span, .coin-sort-selector span, .coin-order-selector span, .coin-options-area div {
+        margin-right: 0px;
+    }
+    .coin-options-area span, .coin-options-area div {
+        text-align: center;
+    }
+    .coin-options-area span {
+        margin-bottom: 20px;
+    }
+    .coin-refresh {
+        margin-top: 30px;
     }
 }
 
