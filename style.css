@@ -83,6 +83,7 @@ button:hover:active {
     font-weight: bold;
     max-height: 60px;
     box-sizing: border-box;
+    overflow: hidden;
 }
 
 .sections ul li {
@@ -594,6 +595,12 @@ select {
         top: unset;
         margin-top: 60px;
     }
+    .market-option-area {
+        justify-content: center;
+    }
+    .market-refresh-container {
+        flex: 1;
+    }
 }
 
 @media only screen and (max-width: 750px) {
@@ -640,7 +647,23 @@ select {
     }
     .coin-options-area div select {
         width: 200px;
-    }    
+    }
+    .market-option-area {
+        flex-direction: column;
+    }
+    .market-option-area div {
+        text-align: center;
+    }  
+    .market-option-area select, .market-option-area span {
+        width: 200px;
+    }
+    .market-option-area span {
+        width: 100px;
+        display: inline-block;
+    }
+    .market-option-area div:not(:first-child) {
+        margin-top: 60px;
+    }
 }
 
 @media only screen and (max-width: 550px) {
@@ -670,6 +693,9 @@ select {
     }
     .basic-info div span {
         font-size: 14px;
+    }
+    .market-option-area span {
+        margin-bottom: 20px;
     }
 }
 
