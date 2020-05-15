@@ -579,6 +579,12 @@ select {
     }
 }
 
+@media only screen and (max-width: 850px) {
+    .exchange-refresh-container {
+        flex: 1.5;
+    }
+}
+
 @media only screen and (max-width: 800px) {
     .coin-options-area {
         flex-wrap: wrap;
@@ -616,6 +622,10 @@ select {
     }
     .coin-options-area div select {
         width: 180px;
+    }
+    .exchange-refresh-container {
+        flex: 1;
+        text-align: center;
     }
 }
 
@@ -673,6 +683,41 @@ select {
     .source-icon {
         display: none;
     }
+    .exchanges-option-area {
+        flex-direction: column;
+        align-items: center;
+    }
+    /* .exchanges-option-area span {
+        width: 100px;
+        display: inline-block;
+    } */
+    .exchanges-option-area select {
+        width: 200px;
+    }
+    .exchanges-option-area {
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr;
+        grid-template-areas: "sorting order"
+                             "button button"
+    }
+    .exchange-sort-selector {
+        grid-area: sorting;
+    }
+    .exchange-order-selector {
+        grid-area: order;
+    }
+    .exchange-refresh-container {
+        grid-area: button;
+        margin-top: 40px;
+        text-align: right;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .exchanges-option-area select {
+        width: 150px;
+    }
 }
 
 @media only screen and (max-width: 550px) {
@@ -705,6 +750,19 @@ select {
     }
     .market-list .header-container div, .market-list .basic-info div {
         width: 33.3%;
+    }
+    .exchanges-option-area {
+        display: flex;
+    }
+    .exchanges-option-area span {
+        width: 70px;
+        display: inline-block;
+    }
+    .exchange-refresh-container {
+        width: 224px;
+    }
+    .exchange-sort-selector, .exchange-order-selector {
+        margin: 45px 0px;
     }
 }
 
@@ -768,6 +826,12 @@ select {
     }
     .market-list .header-container div, .market-list .basic-info div {
         width: 30%;
+    }
+}
+
+@media only screen and (max-width: 295px) {
+    .exchanges-option-area span, .exchange-refresh-container {
+        width: auto;
     }
 }
 /* Responsive end. */
