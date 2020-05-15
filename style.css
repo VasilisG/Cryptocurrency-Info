@@ -577,6 +577,9 @@ select {
     .title-header {
         font-size: 50px;
     }
+    .basic-info div span {
+        font-size: 16px;
+    }
 }
 
 @media only screen and (max-width: 850px) {
@@ -606,6 +609,9 @@ select {
     }
     .market-refresh-container {
         flex: 1;
+    }
+    .fa.fas.fa-link {
+        display: none;
     }
 }
 
@@ -712,6 +718,9 @@ select {
         margin-top: 40px;
         text-align: right;
     }
+    .exchange-icon-header, .exchange-number-of-markets-header, .exchange-icon, .exchange-number-of-markets {
+        display: none;
+    }
 }
 
 @media only screen and (max-width: 600px) {
@@ -741,6 +750,12 @@ select {
     }
     .basic-info div span {
         font-size: 16px;
+    }
+    .exchange-market-share-header, .exchange-market-share {
+        display: none;
+    }
+    .header-container div, .basic-info div {
+        width: 33.3%;
     }
 }
 
@@ -779,6 +794,9 @@ select {
     .sections ul li {
         font-size: 14px;
     }
+    .exchange-list-item .basic-info div span {
+        font-size: 12px;
+    }
 }
 
 @media only screen and (max-width: 400px) {
@@ -802,6 +820,9 @@ select {
     }
     .sections ul li {
         font-size: 12px;
+    }
+    .exchange-list-item .basic-info div span {
+        font-size: 11px;
     }
 }
 
