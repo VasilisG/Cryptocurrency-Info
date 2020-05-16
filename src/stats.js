@@ -1,4 +1,5 @@
 $.fn.fetchStats = function(){
+    var $loadingArea = $(".stats-loading-overlay");
     var $statsArea = $(".stats-area");
     var $totalCoins = $statsArea.find(".total-coins");
     var $totalMarkets = $statsArea.find(".total-markets");
@@ -22,6 +23,7 @@ $.fn.fetchStats = function(){
                 $totalTradingVolume.siblings("p").html(result.data.total24hVolume.toLocaleString() + "<sup>" + symbol + "</sup>");
                 $totalExchanges.siblings("p").html(result.data.totalExchanges);
                 $totalMarketCap.siblings("p").html(result.data.totalMarketCap.toLocaleString() + "<sup>" + symbol + "</sup>");
+                $loadingArea.addClass("inactive");
                 $statsArea.addClass("active");
             } 
             else {
