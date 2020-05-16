@@ -12,6 +12,9 @@ function getImage(elem){
 $.fn.fetchMarkets = function(page){
 
     var $errorArea = $(".error-area");
+    var $errorCode = $errorArea.children('.code');
+    var $messageCode = $errorArea.children('.message');
+
     var $marketList = $('.market-list');
     var $marketLoadingOverlay = $('.market-loading-overlay');
 
@@ -68,7 +71,9 @@ $.fn.fetchMarkets = function(page){
                 });
             }
             else {
-
+                $errorCode.text(result.code);
+                $messageCode.text(result.message);
+                $errorArea.addClass("active");
             }
         },
         error: function(xhr, status, error){

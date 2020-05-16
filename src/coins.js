@@ -140,7 +140,9 @@ $.fn.fetchCoins = function(page){
                 });
             }
             else{
-
+                $errorCode.text(result.code);
+                $messageCode.text(result.message);
+                $errorArea.addClass("active");
             }
         },
         error: function(xhr, status, error){

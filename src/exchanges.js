@@ -12,6 +12,9 @@ function getImage(elem){
 $.fn.fetchExchanges = function(page){
 
     var $errorArea = $(".error-area");
+    var $errorCode = $errorArea.children('.code');
+    var $messageCode = $errorArea.children('.message');
+
     var $exchangeList = $('.exchange-list');
     var $exchangeLoadingOverlay = $('.exchange-loading-overlay');
 
@@ -71,7 +74,9 @@ $.fn.fetchExchanges = function(page){
                 });
             }
             else {
-
+                $errorCode.text(result.code);
+                $messageCode.text(result.message);
+                $errorArea.addClass("active");
             }
         },
         error: function(xhr, status, error){
