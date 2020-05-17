@@ -878,6 +878,15 @@ select {
     .sections ul li {
         padding: 10px;
     }
+    .exchange-volume-header, .exchange-volume {
+        display: none;
+    }
+    .exchange-list .header-container div, .exchange-list .basic-info div {
+        width: 50%;
+    }
+    .exchange-list-item .basic-info div span, .exchange-list .header-container div {
+        font-size: 14px;
+    }
 }
 
 @media only screen and (max-width: 295px) {
