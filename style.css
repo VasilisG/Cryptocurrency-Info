@@ -349,6 +349,10 @@ select {
     color: #f0f095;
 }
 
+.main-markets-area, .main-exchanges-area {
+    position: relative;
+}
+
 .marketCap .more-info-data, .circulating-supply .more-info-data, .total-supply .more-info-data, .highest-price .more-info-data {
     color: #f0f095;
 }
