@@ -103,7 +103,7 @@ $.fn.fetchCoins = function(page){
                     $coinChange = $('<div class="change">' + getChangeElement(coinData['change']) + '</div>');
                     $coinAction = $('<div class="more"><span>More<i class="fa fas fa-chevron-down"></i></span></div>');
 
-                    $coinDescription = $('<div class="description"><p class="more-info-title">Description:</p><p class="more-info-data">' + getDescriptionElement(coinData['description']) +'</p></div>');
+                    $coinDescription = $('<div class="description"><p class="more-info-title">Description:</p><div class="more-info-data-container"><p class="more-info-data">' + getDescriptionElement(coinData['description']) +'</p></div></div>');
                     $coinVolume = $('<div class="volume"><p class="more-info-title">Volume:</p><p class="more-info-data">' + getQuantityElement(coinData['volume'], '') + '</p></div>');
                     $coinMarketGap = $('<div class="marketCap"><p class="more-info-title">Market Cap:</p><p class="more-info-data">' + getQuantityElement(coinData['marketCap'], currencySymbol) + '</p></div>');
                     $coinCirculatingSupply = $('<div class="circulating-supply"><p class="more-info-title">Circulating supply:</p><p class="more-info-data">' + getQuantityElement(coinData['circulatingSupply'], currencySymbol) + '</p></div>');
