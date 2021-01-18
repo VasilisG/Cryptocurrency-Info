@@ -1,4 +1,4 @@
-$.fn.fetchStats = function(){
+function fetchStats(){
     var $loadingArea = $(".stats-loading-overlay");
     var $statsArea = $(".stats-area");
     var $totalCoins = $statsArea.find(".total-coins");
@@ -38,17 +38,9 @@ $.fn.fetchStats = function(){
     });
 }
 
-$.fn.getStats = function(interval){
-    $("body").fetchStats();
-    setInterval(function(){
-        $("body").fetchStats();  
-    },interval);
-}
-
 $(document).ready(function(){
-    $.fn.fetchStats();
-
+    fetchStats();
     $(".refresh").on("click", function(){
-        $.fn.fetchStats();
+        fetchStats();
     });
 });

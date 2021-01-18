@@ -9,7 +9,7 @@ function getImage(elem){
     return elem != null ? elem : './assets/no-logo.jpg';
 }
 
-$.fn.fetchExchanges = function(page){
+function fetchExchanges(page){
 
     var $errorArea = $(".error-area");
     var $errorCode = $errorArea.children('.code');
@@ -41,7 +41,6 @@ $.fn.fetchExchanges = function(page){
 
                 var exchanges = data['data']['exchanges'];
 
-                var $sourceName, $sourceIcon, $sourceVolume, $sourcePrice, $sourceMarketShare;
                 var $exchangeItem, $exchangeBasicInfo;
 
                 $('.exchange-pagination #exchange-current-page').val(page + 1);
@@ -85,38 +84,38 @@ $.fn.fetchExchanges = function(page){
     });
 }
 
-$.fn.attachExchangeRefreshButtonListener = function() {
+function attachExchangeRefreshButtonListener() {
     $('.exchange-refresh').on('click', function(){
         var currentPage = parseInt($('#exchange-current-page').val());
         currentExchangePage = currentPage - 1;
-        $.fn.fetchExchanges(currentExchangePage);
+        fetchExchanges(currentExchangePage);
     });
 }
 
-$.fn.attachExchangePrevPageListener = function() {
+function attachExchangePrevPageListener() {
     $('.exchange-pagination .prev').on('click', function(){
         var currentPage = parseInt($('#exchange-current-page').val());
         if(currentPage > 1) {
             currentPage--;
             currentExchangePage = currentPage - 1;
-            $.fn.fetchExchanges(currentExchangePage);
+            fetchExchanges(currentExchangePage);
         }
     });
 }
 
-$.fn.attachExchangeNextPageListener = function() {
+function attachExchangeNextPageListener() {
     $('.exchange-pagination .next').on('click', function(){
         var currentPage = parseInt($('#exchange-current-page').val());
         var totalExchangePages = parseInt($('.exchange-pagination .total-pages').text());
         if(currentPage < totalExchangePages){
             currentPage++;
             currentExchangePage = currentPage - 1;
-            $.fn.fetchExchanges(currentExchangePage);
+            fetchExchanges(currentExchangePage);
         }
     });
 }
 
-$.fn.attachExchangeKeyListener = function() {
+function attachExchangeKeyListener() {
     $('#exchange-current-page').keypress(function(event){
         if(event.which == 13){
             var totalExchangePages = parseInt($('.exchange-pagination .total-pages').text());
@@ -129,7 +128,7 @@ $.fn.attachExchangeKeyListener = function() {
                 }
                 else {
                     currentExchangePage = $(this).val()-1;
-                    $.fn.fetchExchanges(currentExchangePage);
+                    fetchExchanges(currentExchangePage);
                 }
             }
         }
@@ -137,9 +136,9 @@ $.fn.attachExchangeKeyListener = function() {
 }
 
 $(document).ready(function(){
-    $.fn.fetchExchanges(currentExchangePage);
-    $.fn.attachExchangeRefreshButtonListener(); 
-    $.fn.attachExchangePrevPageListener();
-    $.fn.attachExchangeNextPageListener();  
-    $.fn.attachExchangeKeyListener(); 
+    fetchExchanges(currentExchangePage);
+    attachExchangeRefreshButtonListener(); 
+    attachExchangePrevPageListener();
+    attachExchangeNextPageListener();  
+    attachExchangeKeyListener(); 
 });

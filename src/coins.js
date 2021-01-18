@@ -42,7 +42,7 @@ function getImage(elem){
     return elem != null ? elem : './assets/no-logo.jpg';
 }
 
-$.fn.fetchCoins = function(page){
+function fetchCoins(page){
 
     var $coinList = $('.coin-list');
     var $coinLoadingOverlay = $('.coin-loading-overlay');
@@ -151,14 +151,14 @@ $.fn.fetchCoins = function(page){
     });
 }
 
-$.fn.getCoins = function(interval){
-    $.fn.fetchCoins();
+function getCoins(interval){
+    fetchCoins();
     setInterval(function(){
-        $.fn.fetchStats();  
+        fetchStats();  
     },interval);
 }
 
-$.fn.attachMoreListener = function() {
+function attachMoreListener() {
     $('body').on('click', '.more', function(){
         $moreInfo = $(this).parent().siblings('.more-info');
         if($moreInfo.hasClass('more-info-active')){
@@ -172,38 +172,38 @@ $.fn.attachMoreListener = function() {
     });
 }
 
-$.fn.attachRefreshButtonListener = function() {
+function attachRefreshButtonListener() {
     $('.coin-refresh').on('click', function(){
         var currentPage = parseInt($('#coin-current-page').val());
         currentCoinPage = currentPage - 1;
-        $.fn.fetchCoins(currentCoinPage);
+        fetchCoins(currentCoinPage);
     });
 }
 
-$.fn.attachPrevPageListener = function() {
+function attachPrevPageListener() {
     $('.coin-pagination .prev').on('click', function(){
         var currentPage = parseInt($('#coin-current-page').val());
         if(currentPage > 1) {
             currentPage--;
             currentCoinPage = currentPage - 1;
-            $.fn.fetchCoins(currentCoinPage);
+            fetchCoins(currentCoinPage);
         }
     });
 }
 
-$.fn.attachNextPageListener = function() {
+function attachNextPageListener() {
     $('.coin-pagination .next').on('click', function(){
         var currentPage = parseInt($('#coin-current-page').val());
         var totalPages = parseInt($('.coin-pagination .total-pages').text());
         if(currentPage < totalPages){
             currentPage++;
             currentCoinPage = currentPage - 1;
-            $.fn.fetchCoins(currentCoinPage);
+            fetchCoins(currentCoinPage);
         }
     });
 }
 
-$.fn.attachKeyListener = function() {
+function attachKeyListener() {
     $('#coin-current-page').keypress(function(event){
         if(event.which == 13){
             var totalPages = parseInt($('.coin-pagination .total-pages').text());
@@ -216,7 +216,7 @@ $.fn.attachKeyListener = function() {
                 }
                 else {
                     currentCoinPage = $(this).val()-1;
-                    $.fn.fetchCoins(currentCoinPage);
+                    fetchCoins(currentCoinPage);
                 }
             }
         }
@@ -224,10 +224,10 @@ $.fn.attachKeyListener = function() {
 }
 
 $(document).ready(function(){
-    $.fn.fetchCoins(currentCoinPage);
-    $.fn.attachRefreshButtonListener();
-    $.fn.attachMoreListener(); 
-    $.fn.attachPrevPageListener();
-    $.fn.attachNextPageListener();  
-    $.fn.attachKeyListener(); 
+    fetchCoins(currentCoinPage);
+    attachRefreshButtonListener();
+    attachMoreListener(); 
+    attachPrevPageListener();
+    attachNextPageListener();  
+    attachKeyListener(); 
 });

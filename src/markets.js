@@ -9,7 +9,7 @@ function getImage(elem){
     return elem != null ? elem : './assets/no-logo.jpg';
 }
 
-$.fn.fetchMarkets = function(page){
+function fetchMarkets(page){
 
     var $errorArea = $(".error-area");
     var $errorCode = $errorArea.children('.code');
@@ -82,38 +82,38 @@ $.fn.fetchMarkets = function(page){
     });
 }
 
-$.fn.attachMarketRefreshButtonListener = function() {
+function attachMarketRefreshButtonListener() {
     $('.market-refresh').on('click', function(){
         var currentPage = parseInt($('#market-current-page').val());
         currentMarketPage = currentPage - 1;
-        $.fn.fetchMarkets(currentMarketPage);
+        fetchMarkets(currentMarketPage);
     });
 }
 
-$.fn.attachMarketPrevPageListener = function() {
+function attachMarketPrevPageListener() {
     $('.market-pagination .prev').on('click', function(){
         var currentPage = parseInt($('#market-current-page').val());
         if(currentPage > 1) {
             currentPage--;
             currentMarketPage = currentPage - 1;
-            $.fn.fetchMarkets(currentMarketPage);
+            fetchMarkets(currentMarketPage);
         }
     });
 }
 
-$.fn.attachMarketNextPageListener = function() {
+function attachMarketNextPageListener() {
     $('.market-pagination .next').on('click', function(){
         var currentPage = parseInt($('#market-current-page').val());
         var totalMarketPages = parseInt($('.market-pagination .total-pages').text());
         if(currentPage < totalMarketPages){
             currentPage++;
             currentMarketPage = currentPage - 1;
-            $.fn.fetchMarkets(currentMarketPage);
+            fetchMarkets(currentMarketPage);
         }
     });
 }
 
-$.fn.attachMarketKeyListener = function() {
+function attachMarketKeyListener() {
     $('#market-current-page').keypress(function(event){
         if(event.which == 13){
             var totalMarketPages = parseInt($('.market-pagination .total-pages').text());
@@ -126,7 +126,7 @@ $.fn.attachMarketKeyListener = function() {
                 }
                 else {
                     currentMarketPage = $(this).val()-1;
-                    $.fn.fetchMarkets(currentMarketPage);
+                    fetchMarkets(currentMarketPage);
                 }
             }
         }
@@ -134,9 +134,9 @@ $.fn.attachMarketKeyListener = function() {
 }
 
 $(document).ready(function(){
-    $.fn.fetchMarkets(currentMarketPage);
-    $.fn.attachMarketRefreshButtonListener(); 
-    $.fn.attachMarketPrevPageListener();
-    $.fn.attachMarketNextPageListener();  
-    $.fn.attachMarketKeyListener(); 
+    fetchMarkets(currentMarketPage);
+    attachMarketRefreshButtonListener(); 
+    attachMarketPrevPageListener();
+    attachMarketNextPageListener();  
+    attachMarketKeyListener(); 
 });
