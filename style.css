@@ -581,6 +581,16 @@ select {
 .fa.fas.fa-link {
     margin-left: 5px;
 }
+
+.more-info-data-container a {
+    color: #eab63a;
+    text-decoration: none;
+    transition: 0.4s all ease;
+}
+
+.more-info-data-container a:hover {
+    color: #f0deb2;
+}
 /* Exchanges area CSS end. */
 
 /* Responsive start. */
